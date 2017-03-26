@@ -52,10 +52,11 @@ def my_weather():
     w = printable_weather('', city, state, postal, conditions[0])
 
     # print('\n\n=== {}\n\n'.format(w))
-    return '<pre>{}</pre>'.format(w)
+    return '<h2>{}</h2>'.format(w)
 
 
 @app.route('/weather')
+@app.route('/weather/')
 @app.route('/weather/<postal>')
 def weather(postal=11767):
     location = get_city_by_postal(str(postal))
@@ -69,7 +70,7 @@ def weather(postal=11767):
     city = location['EnglishName']
     state = location['AdministrativeArea']['ID']
     postal = location['PrimaryPostalCode']
-    return printable_weather('', city, state, postal, conditions[0])
+    return '<h2>{}</h2>'.format(printable_weather('', city, state, postal, conditions[0]))
 
 
 def _as_attachment(response, content_type, filename):
