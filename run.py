@@ -15,7 +15,7 @@ USER = 'guest'
 
 @app.route('/')
 def index():
-    ip_info = w.get_external_ip()
+    ip_info = w.get_external_ip(ip=_remote_address())
     return flask.render_template(
         'index.html',
         owner=OWNER,
@@ -106,8 +106,13 @@ def _get_weather(location, debug=False):
 
 
 def _remote_address():
-    remote_addr = flask.request.remote_addr
-    return remote_addr if remote_addr != '127.0.0.1' else w.get_external_ip()['ip']
+    if flask.request.headers.getlist("X-Forwarded-For"):
+        remote_addr = flask.request.headers.getlist("X-Forwarded-For")[0]
+    else:
+        remote_addr = flask.request.remote_addr
+    if remote_addr == '127.0.0.1':
+        remote_addr = w.get_external_ip()['ip']
+    return remote_addr
 
 
 def _time(time_format='%Y-%m-%d %H:%M:%S'):
