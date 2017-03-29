@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import datetime
 import json
 import os
@@ -95,7 +97,7 @@ def _get_weather(location, debug=False):
     )
     if debug:
         print('Weather: {}'.format(w_json))
-    fmt = '{}'
+    fmt = u'{}'
     return fmt.format(w.printable_weather(
         city=location['EnglishName'],
         state=location['AdministrativeArea']['ID'],
