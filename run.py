@@ -71,6 +71,8 @@ def weather(postal=11767):
 
 @app.route('/robots.txt')
 def robots_txt():
+    # Allow scans by Google robot:
+    return flask.Response('')
     """Tell robots to go away"""
     return flask.Response(
         'User-agent: *\nDisallow: /\n',
