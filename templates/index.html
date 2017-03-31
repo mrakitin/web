@@ -24,14 +24,26 @@
 </head>
 <body>
 <div class="container">
-    <p>Hello, <b>{{user}}</b>!</p>
-    <p>Welcome to {{owner}}'s web page!</p>
-    <p><b>Note:</b> The web site is under construction. Available pages so far:</p>
-    <ul>
-        <li>{{owner}}'s <a href="cv"><b>CV</b></a></li>
-        <li>Weather in <a href="weather" target="_blank"><b>Nesconset, NY</b></a></li>
-        <li>Weather in <a href="myweather" target="_blank"><b>your location</b></a> (accuracy is not high at all!)</li>
-    </ul>
+    <table>
+        <tr>
+            <td style="padding:10px;">
+                <img src="static/img/photo.jpg" alt="{{owner}}" style="float:left;width:160px;border:0;">
+            </td>
+            <td style="padding:10px;">
+                <p>Hello, <b>{{user}}</b>!</p>
+                <p>Welcome to {{owner}}'s web page!</p>
+                <p><b>Note:</b> The web site is under construction. Available pages so far:</p>
+                <ul>
+                    <li>{{owner}}'s <a href="cv"><b>CV</b></a></li>
+                    <li>Weather in <a href="weather" target="_blank"><b>Nesconset, NY</b></a></li>
+                    <li>Weather in <a href="myweather" target="_blank"><b>your location</b></a> (accuracy is not high at
+                        all!)
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
     <hr>
     <br><br>
     <p>Your IP info:</p>
