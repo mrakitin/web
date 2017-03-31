@@ -12,7 +12,7 @@ import weather.weather as w
 app = flask.Flask(__name__)
 
 OWNER = 'Maksim Rakitin'
-USER = 'guest'
+USER = 'Guest'
 
 
 @app.route('/')
@@ -29,7 +29,7 @@ def index():
 
 @app.route('/cv')
 @app.route('/CV')
-def cv(as_attachment=False):
+def cv(as_attachment=True):
     filename = 'RakitinMS_CV.pdf'
     mimetype = os.path.splitext(filename)[1]
     filepath = os.path.join(os.path.dirname(os.getcwd()), 'CV/{}'.format(filename))
