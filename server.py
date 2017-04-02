@@ -79,6 +79,16 @@ def weather(postal=11767):
         return flask.jsonify({'error': str(e)})
 
 
+@app.route('/favicon.ico')
+def favicon():
+    """Routes to favicon.ico file."""
+    return flask.send_from_directory(
+        os.path.join(static_folder, 'img'),
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon',
+    )
+
+
 @app.route('/robots.txt')
 def robots_txt():
     # Allow scans by Google robot:
