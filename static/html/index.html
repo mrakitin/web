@@ -1,37 +1,36 @@
-{% include 'header.html' %}
-<div class="container">
-    <table>
-        <tr>
-            <td style="padding:10px;">
-                <img id="image" src="/static/img/photo.jpg" alt="{{owner}}">
-            </td>
-            <td id="table">
-                <p>Hello, <b>{{user}}</b>!</p>
-                <p>Welcome to {{owner}}'s web page!</p>
-                <p><b>Note:</b> The web site is under construction. Available pages so far:</p>
-                <ul>
-                    <li>{{owner}}'s <a href="cv"><b>CV</b></a></li>
-                    <li>Weather in <a href="weather" target="_blank"><b>Nesconset, NY</b></a></li>
-                    <li>Weather in <a href="myweather" target="_blank"><b>your location</b></a> (accuracy is not high at
-                        all!)
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    </table>
+{% extends 'layout.html' %}
+{% block content %}
+<table>
+    <tr>
+        <td style="padding:10px;">
+            <img id="image" src="/static/img/photo.jpg" alt="{{owner}}">
+        </td>
+        <td id="table">
+            <p>Hello, <b>{{user}}</b>!</p>
+            <p>Welcome to {{owner}}'s web page!</p>
+            <p><b>Note:</b> The web site is under construction. Available pages so far:</p>
+            <ul>
+                <li>{{owner}}'s <a href="cv"><b>CV</b></a></li>
+                <li>Weather in <a href="weather" target="_blank"><b>Nesconset, NY</b></a></li>
+                <li>Weather in <a href="myweather" target="_blank"><b>your location</b></a> (accuracy is not high at
+                    all!)
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
 
-    <hr>
-    <br><br>
-    <p>Your IP info:</p>
-    <table>
-        {% for k, v in ip_info.items() %}
-        <tr>
-            <td>{{k}}:</td>
-            <td>{{v}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <p>Current time: {{time}}</p>
-</div>
-{% include 'footer.html' %}
+<hr>
+<br><br>
+<p>Your IP info:</p>
+<table>
+    {% for k, v in ip_info.items() %}
+    <tr>
+        <td>{{k}}:</td>
+        <td>{{v}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<p>Current time: {{time}}</p>
+{% endblock %}
