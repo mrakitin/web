@@ -1,0 +1,24 @@
+.container {
+    max-width: 500px;
+    padding-top: 100px;
+    z-index: 100;
+    position: relative;
+    margin: auto;
+}
+#dot-matrix {
+    background: url(/static/img/dot.png);
+    opacity: 0.1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1
+}
+#table {
+    padding: 10px;
+}
+#image {
+    float: left;
+    width: 160px;
+    border:0;
+}

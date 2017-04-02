@@ -9,7 +9,14 @@ import flask
 
 import weather.weather as w
 
-app = flask.Flask(__name__)
+static_folder = os.path.abspath('static')
+template_folder = os.path.join(static_folder, 'html')
+
+app = flask.Flask(
+    __name__,
+    static_folder=static_folder,
+    template_folder=template_folder,
+)
 
 OWNER = 'Maksim Rakitin'
 USER = 'Guest'
@@ -20,6 +27,7 @@ def index():
     ip_info = w.get_external_ip(ip=_remote_address())
     return flask.render_template(
         'index.html',
+        title="Welcome to {}'s web page!".format(OWNER),
         owner=OWNER,
         user=USER,
         ip_info=ip_info,
@@ -47,6 +55,7 @@ def my_weather():
     remote_addr = _remote_address()
     return flask.render_template(
         'weather.html',
+        title='My Weather',
         parameter={'name': 'your IP address', 'value': remote_addr},
         weather=_get_weather(w.get_city_by_ip(remote_addr)),
         time=_time(),
@@ -61,6 +70,7 @@ def weather(postal=11767):
         postal = str(postal)
         return flask.render_template(
             'weather.html',
+            title='Weather',
             parameter={'name': 'postal', 'value': postal},
             weather=_get_weather(w.get_city_by_postal(postal)),
             time=_time(),
@@ -73,11 +83,11 @@ def weather(postal=11767):
 def robots_txt():
     # Allow scans by Google robot:
     return flask.Response('')
-    """Tell robots to go away"""
-    return flask.Response(
-        'User-agent: *\nDisallow: /\n',
-        mimetype='text/plain',
-    )
+    # """Tell robots to go away"""
+    # return flask.Response(
+    #     'User-agent: *\nDisallow: /\n',
+    #     mimetype='text/plain',
+    # )
 
 
 def _as_attachment(response, content_type, filename):
