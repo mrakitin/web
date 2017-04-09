@@ -2,12 +2,7 @@
     "2013.10-2015.12": {
         "place": "Stony Brook University (SUNY)",
         "title": "USPEX crystal structure prediction",
-        "link": "http://uspex.stonybrook.edu/uspex.html",
-        "example": {
-            "link": "/static/pdf/2015-07-30_BNL_mrakitin.pdf",
-            "width": "500px",
-            "height": "400px"
-        }
+        "link": "http://uspex.stonybrook.edu/uspex.html"
     },
     "2013.11-2015.12": {
         "place": "Stony Brook University (SUNY)",
