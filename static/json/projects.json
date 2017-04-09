@@ -9,10 +9,15 @@
             "height": "400px"
         }
     },
+    "2013.11-2015.12": {
+        "place": "Stony Brook University (SUNY)",
+        "title": "USPEX online utilities (a dosen of various tools and utilities)",
+        "link": "http://han.ess.sunysb.edu/"
+    },
     "2014.04": {
         "place": "Stony Brook University (SUNY)",
         "title": "USPEX online utilities - interactive crystal forms visualization",
-        "link": "http://han.ess.sunysb.edu/",
+        "link": "http://han.ess.sunysb.edu/crystal_form",
         "example": {
             "link": "/static/projects/crystal_form.html",
             "width": "500px",

@@ -26,10 +26,9 @@ USER = 'Guest'
 
 @app.route('/')
 def index():
-    return flask.render_template(
+    return _render_template(
         'index.html',
         title="Welcome to {}'s web page!".format(OWNER),
-        owner=OWNER,
         user=USER,
     )
 
@@ -51,7 +50,7 @@ def cv(as_attachment=True):
 @app.route('/ip/')
 def ip():
     ip_info = w.get_external_ip(ip=_remote_address())
-    return flask.render_template(
+    return _render_template(
         'ip.html',
         title='Your IP info',
         ip_info=ip_info,
@@ -63,7 +62,7 @@ def ip():
 @app.route('/myweather/')
 def my_weather():
     remote_addr = _remote_address()
-    return flask.render_template(
+    return _render_template(
         'weather.html',
         title='My Weather',
         parameter={'name': 'your IP address', 'value': remote_addr},
@@ -78,7 +77,7 @@ def my_weather():
 def weather(postal=11767):
     try:
         postal = str(postal)
-        return flask.render_template(
+        return _render_template(
             'weather.html',
             title='Weather',
             parameter={'name': 'postal', 'value': postal},
@@ -102,10 +101,8 @@ def favicon():
 @app.route('/presentations')
 def presentations():
     """Shows a list of selected presentations"""
-    json_file = os.path.join(json_folder, 'presentations.json')
-    data_format = 'pdf'
-    data = _read_json(json_file=json_file, data_format=data_format)
-    return flask.render_template(
+    data = _read_json(json_file='presentations.json', data_format='pdf')
+    return _render_template(
         'table.html',
         title='Presentations',
         data=data,
@@ -116,9 +113,8 @@ def presentations():
 @app.route('/projects')
 def projects():
     """Shows a list of selected projects"""
-    json_file = os.path.join(json_folder, 'projects.json')
-    data = _read_json(json_file=json_file)
-    return flask.render_template(
+    data = _read_json(json_file='projects.json')
+    return _render_template(
         'table.html',
         title='Projects',
         data=data,
@@ -167,6 +163,7 @@ def _get_weather(location, debug=False):
 
 
 def _read_json(json_file, data_format=None):
+    json_file = os.path.join(json_folder, json_file)
     with open(json_file) as f:
         data = json.load(f, object_pairs_hook=collections.OrderedDict)
         data = collections.OrderedDict(reversed(list(data.items())))
@@ -184,6 +181,12 @@ def _remote_address():
     if remote_addr == '127.0.0.1':
         remote_addr = w.get_external_ip()['ip']
     return remote_addr
+
+
+def _render_template(*args, **kwargs):
+    if 'owner' not in kwargs.keys():
+        kwargs['owner'] = OWNER
+    return flask.render_template(*args, **kwargs)
 
 
 def _time(time_format='%Y-%m-%d %H:%M:%S'):
