@@ -2,18 +2,22 @@
 {% block content %}
 <table>
     <tr>
-        <td style="padding:10px;">
+        <td>
             <img id="image" src="/static/img/photo.jpg" alt="{{owner}}">
         </td>
         <td id="table">
-            <h2>Hello, <b>{{user}}</b>!</h2>
-            <p>Welcome to {{owner}}'s web page!</p>
-            <p><b>Note:</b> The web site is under construction. Available pages so far:</p>
+            <h3>Welcome to {{owner}}'s web page!</h3>
             <ul>
-                <li>{{owner}}'s <a href="cv"><b>CV</b></a></li>
-                <li>Weather in <a href="weather"><b>Nesconset, NY</b></a></li>
-                <li>Weather in <a href="myweather"><b>your location</b></a> (accuracy is not high at all!)
-                </li>
+                <li>{{owner}}'s <a href="/cv"><b>CV</b></a></li>
+                <li>{{owner}}'s <a href="/projects"><b>projects</b></a></li>
+                <li>{{owner}}'s <a href="/presentations"><b>presentations</b></a></li>
+            </ul>
+            <hr>
+            <h3>Useful links:</h3>
+            <ul>
+                <li>Weather in <a href="/weather"><b>Nesconset, NY</b></a></li>
+                <li>Weather in <a href="/myweather"><b>your location</b></a> (accuracy is not high at all!)
+                <li>Your <a href="/ip"><b>IP info</b></a></li>
             </ul>
         </td>
     </tr>
@@ -33,17 +37,4 @@
     </div>
 </div>
 
-<!--<hr>-->
-<!--<br><br>-->
-<!--<p>Your IP info:</p>-->
-<!--<table>-->
-    <!--{% for k, v in ip_info.items() %}-->
-    <!--<tr>-->
-        <!--<td>{{k}}:</td>-->
-        <!--<td>{{v}}</td>-->
-    <!--</tr>-->
-    <!--{% endfor %}-->
-<!--</table>-->
-<!--<br>-->
-<!--<p>Current time: {{time}}</p>-->
 {% endblock %}

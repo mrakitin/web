@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="center">
+    <h2>Your IP info:</h2>
+    <table>
+        {% for k, v in ip_info.items() %}
+        <tr>
+            <td>{{k}}:</td>
+            <td>{{v}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <p>Current time: {{time}}</p>
+</div>
+{% endblock %}

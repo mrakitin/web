@@ -1,0 +1,32 @@
+{
+    "2013.10-2015.12": {
+        "place": "Stony Brook University (SUNY)",
+        "title": "USPEX crystal structure prediction",
+        "link": "http://uspex.stonybrook.edu/uspex.html",
+        "example": {
+            "link": "/static/pdf/2015-07-30_BNL_mrakitin.pdf",
+            "width": "500px",
+            "height": "400px"
+        }
+    },
+    "2014.04": {
+        "place": "Stony Brook University (SUNY)",
+        "title": "USPEX online utilities - interactive crystal forms visualization",
+        "link": "http://han.ess.sunysb.edu/",
+        "example": {
+            "link": "/static/projects/crystal_form.html",
+            "width": "500px",
+            "height": "450px"
+        }
+    },
+    "2015.12-present": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "SRW",
+        "link": "https://github.com/mrakitin/SRW"
+    },
+    "2015.12-present ": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Sirepo",
+        "link": "https://github.com/radiasoft/sirepo"
+    }
+}

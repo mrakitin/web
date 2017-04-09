@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Selected {{title.lower()}}:</h2>
+<table>
+    <tr>
+        <th>Date:</th>
+        <th>Title:</th>
+        <th>Place:</th>
+    </tr>
+    {% for k, v in data.items() %}
+    <tr>
+        <td id="date-field">{{k}}</td>
+        <td><a href="{{v['link']}}" target="{{target}}">{{v['title']}}</a></td>
+        <td>{{v['place']}}</td>
+    </tr>
+    {% if 'example' in v %}
+    <tr>
+        <td></td>
+        <td colspan="2" style="text-align:center">Example:<br>
+            <iframe width="{{v['example']['width']}}" height="{{v['example']['height']}}" frameborder="0" scrolling="no"
+                    src="{{v['example']['link']}}" style="border:1px dotted grey"></iframe>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}

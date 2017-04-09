@@ -6,7 +6,7 @@ body {
     margin-bottom: 144px;
 }
 .container {
-    max-width: 500px;
+    max-width: 700px;
     padding-top: 100px;
     z-index: 100;
     position: relative;
@@ -19,11 +19,29 @@ body {
     height: 144px;
     background-color: #f5f5f5;
 }
+div.center
+{
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid lightgray;
+}
 #centered-icons {
     position: absolute;
     left: 5px;
     bottom: 35%;
     z-index: 2;
+}
+#date-field {
+    min-width: 120px;
 }
 #dot-matrix {
     background: url(/static/img/dot.png);

@@ -1,0 +1,22 @@
+{
+    "2014-07-07": {
+        "place": "Stony Brook University (SUNY)",
+        "title": "Introduction to Python",
+        "link": "2014-07-07_Introduction_to_Python.pdf"
+    },
+    "2014-11-07": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Tutorial 8: Introduction to USPEX",
+        "link": "2014-11-07_Tutorial8_BNL_mrakitin.pdf"
+    },
+    "2015-07-30": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Crystal and protein structure modeling, software development and applications",
+        "link": "2015-07-30_BNL_mrakitin.pdf"
+    },
+    "2016-05-30": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Simulating Beamlines and User Experiments with \"Synchrotron Radiation Workshop\"",
+        "link": "2016-05-25_poster_UM-2016_mrakitin.pdf"
+    }
+}
