@@ -21,6 +21,16 @@ app = flask.Flask(
 )
 
 OWNER = 'Maksim Rakitin'
+ALT_NAMES = ['Maxim Rakitin', 'Максим Ракитин']
+ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'ЮУрГУ', 'Applied Technologies',
+                 'Rocket Software']
+TOPICS = ['science', 'physics', 'chemistry', 'software development', 'Python']
+KEYWORDS = '{}, {}, {}, {}'.format(
+    OWNER,
+    ', '.join(ALT_NAMES),
+    ', '.join(ORGANIZATIONS),
+    ', '.join(TOPICS),
+)
 USER = 'Guest'
 
 
@@ -186,6 +196,8 @@ def _remote_address():
 def _render_template(*args, **kwargs):
     if 'owner' not in kwargs.keys():
         kwargs['owner'] = OWNER
+    if 'keywords' not in kwargs.keys():
+        kwargs['keywords'] = KEYWORDS
     return flask.render_template(*args, **kwargs)
 
 
