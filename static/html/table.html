@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h2>Selected {{title.lower()}}:</h2>
+<h2 class="centered">Selected {{title.lower()}}:</h2>
 <table>
     <tr>
         <th>Date:</th>
@@ -16,7 +16,7 @@
     {% if 'example' in v %}
     <tr>
         <td></td>
-        <td colspan="2" style="text-align:center">Example:<br>
+        <td colspan="2" class="centered">Example:<br>
             <iframe width="{{v['example']['width']}}" height="{{v['example']['height']}}" frameborder="0" scrolling="no"
                     src="{{v['example']['link']}}" style="border:1px dotted grey"></iframe>
         </td>

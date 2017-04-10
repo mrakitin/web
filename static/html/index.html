@@ -1,39 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
-<table>
-    <tr>
-        <td>
-            <img id="image" src="/static/img/photo.jpg" alt="{{owner}}">
-        </td>
-        <td id="table">
-            <h3>Welcome to {{owner}}'s web page!</h3>
-            <ul>
-                <li>{{owner}}'s <a href="/cv"><b>CV</b></a></li>
-                <li>{{owner}}'s <a href="/projects"><b>projects</b></a></li>
-                <li>{{owner}}'s <a href="/presentations"><b>presentations</b></a></li>
-            </ul>
-            <hr>
-            <h3>Useful links:</h3>
-            <ul>
-                <li>Weather in <a href="/weather"><b>Nesconset, NY</b></a></li>
-                <li>Weather in <a href="/myweather"><b>your location</b></a> (accuracy is not high at all!)
-                <li>Your <a href="/ip"><b>IP info</b></a></li>
-            </ul>
-        </td>
-    </tr>
-</table>
-
+<h2 class="centered">Welcome to {{owner}}'s web page!</h2>
+<img id="image" src="/static/img/photo.jpg" alt="{{owner}}">
+<ul>
+    <li>{{owner}}'s <a href="/cv"><b>CV</b></a></li>
+    <li>{{owner}}'s <a href="/projects"><b>projects</b></a></li>
+    <li>{{owner}}'s <a href="/presentations"><b>presentations</b></a></li>
+</ul>
 <hr>
-<div class="section" id="links">
-    <h3>Learn more about my work:</h3>
-    <div class=pocoo-powered>
-        <a class="reference external image-reference" href="http://staff.ps.bnl.gov/staff.aspx?id=92991" target="_blank"><img alt="Brookhaven National Laboratory - that's where I work now" src="/static/img/logo_BNL.png" /></a>
-        <a class="reference external image-reference" href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank"><img alt="LinkedIn - let's connect!" src="/static/img/logo_LinkedIn.png" /></a>
-        <a class="reference external image-reference" href="https://scholar.google.com/citations?user=kK04dAcAAAAJ&hl=en" target="_blank"><img alt="My Google Scholar" src="/static/img/logo_GoogleScholar.png" /></a>
-        <a class="reference external image-reference" href="https://www.researchgate.net/profile/Maksim_Rakitin" target="_blank"><img alt="My ResearchGate" src="/static/img/logo_ResearchGate.png" /></a>
-        <a class="reference external image-reference" href="https://github.com/mrakitin" target="_blank"><img alt="See my GitHub projects" src="/static/img/logo_GitHub.png" /></a>
-        <a class="reference external image-reference" href="http://uspex.stonybrook.edu/lab.html" target="_blank"><img alt="My postdoc at Stony Brook University" src="/static/img/logo_SBU.png" /></a>
-        <a class="reference external image-reference" href="http://physics.susu.ac.ru/drupal/node/11" target="_blank"><img alt="South Ural State University - my Alma Mater" src="/static/img/logo_SUSU.png" /></a>
+<h3>Useful links:</h3>
+<ul>
+    <li>Weather in <a href="/weather"><b>Nesconset, NY</b></a></li>
+    <li>Weather in <a href="/myweather"><b>your location</b></a> (accuracy is not high at all!)
+    <li>Your <a href="/ip"><b>IP info</b></a></li>
+</ul>
+
+<div class="newline">
+    <hr>
+    <div class="section" id="links">
+        <h3 class="centered">Learn more about my work:</h3>
+        <div class=pocoo-powered>
+            <a class="reference external image-reference" href="http://staff.ps.bnl.gov/staff.aspx?id=92991" target="_blank"><img alt="Brookhaven National Laboratory - that's where I work now" src="/static/img/logo_BNL.png" /></a>
+            <a class="reference external image-reference" href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank"><img alt="LinkedIn - let's connect!" src="/static/img/logo_LinkedIn.png" /></a>
+            <a class="reference external image-reference" href="https://scholar.google.com/citations?user=kK04dAcAAAAJ&hl=en" target="_blank"><img alt="My Google Scholar" src="/static/img/logo_GoogleScholar.png" /></a>
+            <a class="reference external image-reference" href="https://www.researchgate.net/profile/Maksim_Rakitin" target="_blank"><img alt="My ResearchGate" src="/static/img/logo_ResearchGate.png" /></a>
+            <a class="reference external image-reference" href="https://github.com/mrakitin" target="_blank"><img alt="See my GitHub projects" src="/static/img/logo_GitHub.png" /></a>
+            <a class="reference external image-reference" href="http://uspex.stonybrook.edu/lab.html" target="_blank"><img alt="My postdoc at Stony Brook University" src="/static/img/logo_SBU.png" /></a>
+            <a class="reference external image-reference" href="http://physics.susu.ac.ru/drupal/node/11" target="_blank"><img alt="South Ural State University - my Alma Mater" src="/static/img/logo_SUSU.png" /></a>
+        </div>
     </div>
 </div>
 
