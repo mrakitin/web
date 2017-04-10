@@ -21,8 +21,8 @@ app = flask.Flask(
 )
 
 OWNER = 'Maksim Rakitin'
-ALT_NAMES = ['Maxim Rakitin', u'Максим Ракитин']
-ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', u'ЮУрГУ', 'Applied Technologies',
+ALT_NAMES = ['Maxim Rakitin']
+ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'Applied Technologies',
                  'Rocket Software']
 TOPICS = ['science', 'physics', 'chemistry', 'software development', 'Python']
 KEYWORDS = '{}, {}, {}, {}'.format(
