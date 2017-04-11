@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!--
+            Author: Maksim Rakitin
+            Email : maxim.rakitin@gmail.com
+            Date  : 2015-02-16
+            Description: The code for Exercise 2 (MARVEL Software Engineer/Web Data Engineer positions)
+
+            Aim: Create a web page to graphically visualize points (whose coordinates are obtained from
+            a REST API) inside a two-dimensional rectangle in a web page. Update the coordinates
+            upon user request and make older points fade out.
+
+            Task: You have to prepare an HTML web page that loads at launch time the coordinates of the
+            points from the above API and visualizes each point as a red dot on the page.
+        -->
+
+        <title>Maksim Rakitin: Exercise 2 (MARVEL Software Engineer/Web Data Engineer positions)</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script>
+
+        // The function gets data from the specified REST API server:
+        function getData() {
+            var json_data = new XMLHttpRequest();
+            json_data.open("GET", "http://theossrv2.epfl.ch/aiida_assignment2/api/points/", false);
+            json_data.send();
+
+            return json_data.response;
+        }
+
+        // This function is used to clear the local storage when the page load:
+        function clearStorage() {
+            localStorage.clear();
+        }
+
+        // The function draws a circle with the specified parameters (coordinares, color, transparency):
+        function drawCircle(x, y, color, transp){
+            var canvas = document.getElementById("canvas_1");
+            var context = canvas.getContext('2d');
+            var centerX = x;
+            var centerY = y;
+            var radius = 10;
+
+            transp = typeof transp !== 'undefined' ? transp : 1.0;
+
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
+            context.globalAlpha = transp;
+            context.fillStyle = color;
+            context.fill();
+            context.lineWidth = 2;
+            context.strokeStyle = '#003300';
+            context.stroke();
+        }
+
+        // This is the main function to plot all points with traces:
+        function drawOnCanvas(traceLength, useColors) {
+
+            // Default parameters: number of points in a trace and colors used:
+            traceLength = typeof traceLength !== 'undefined' ? traceLength : 4;
+            useColors = typeof useColors !== 'undefined' ? useColors : 0; // Use only red color for all the points.
+            var color = useColors;
+
+
+            //console.log('Length of the trace:', traceLength);
+
+            // Get points from the REST API and convert them to a dictionary:
+            var points = getData();
+            var obj    = JSON.parse(points);
+
+            // Identify range parameters:
+            var min_x = obj['range']['min_x'];
+            var max_x = obj['range']['max_x'];
+            var min_y = obj['range']['min_y'];
+            var max_y = obj['range']['max_y'];
+
+            // Set canvas size:
+            var canvas    = document.getElementById("canvas_1");
+            canvas.width  = (max_x - min_x)*1.0;
+            canvas.height = (max_y - min_y)*1.0;
+
+            // Number of circles:
+            var pointsNumber = obj['circles'].length;
+
+
+            // Get number of previous runs from the local storage:
+            var run = JSON.parse(localStorage.getItem('run'));
+            if (! run) {
+                run = 0;
+            }
+
+            // Create list of empty dictionaries for all the poonts to fill with coordinates of traces later:
+            var data0 = [];
+            for (var i = 0; i < pointsNumber; i++) {
+                empty_dict = {'id'  : obj['circles'][i]['id'], 'runs': []};
+                data0.push(empty_dict);
+            }
+
+            // Run through all points and draw them and their traces:
+            for (var i = 0; i < pointsNumber; i++) {
+
+                // Get id, x and y coordinates:
+                var id = obj['circles'][i]['id'];
+                var x  = obj['circles'][i]['x'];
+                var y  = obj['circles'][i]['y'];
+
+                // In case we want to draw all the circles with different colors, this list can be used.
+                var colors = ['red', 'green', 'blue'];
+                // A user can specify which colors to use:
+                if (useColors == 'all') {
+                    color = i;
+                }
+
+                // Get all previous points from the local storage:
+                var data  = JSON.parse(localStorage.getItem('coordinates'));
+
+                // Draw the trace from previous runs:
+                if (run > 0) {
+                    // Run through all previous runs:
+                    for (var j = 0; j < data[id]['runs'].length; j++) {
+
+                        // Set transparency depending on the position of the point in the list:
+                        // 0.25 for the oldest point, 0.75 - for the newest one (in case of default trace length)
+                        var transp = 1.0 - (data[id]['runs'].length-j) / traceLength;
+
+                        // Coordinates of a point from history:
+                        var x1 = data[id]['runs'][j]['x'];
+                        var y1 = data[id]['runs'][j]['y'];
+
+                        // Draw the trace point:
+                        drawCircle(x1, y1, colors[color], transp=transp);
+                    }
+
+                    // Remove the first element (the oldest coordinates) from the list
+                    // if the run number is 3 or more (default trace length).
+                    // 3 since we already have 1 point plotted before this cycle.
+                    if (run > traceLength - 2) {
+                        data[id]['runs'].splice(0, 1);
+                    }
+
+                } else {
+                    // Initialize the dictionary to store the data in the first run:
+                    data = data0;
+                }
+
+                // Draw the current point:
+                drawCircle(x, y, colors[color]);
+
+                // Push the current coordinates to the list:
+                data[id]['runs'].push({'x': x, 'y': y});
+
+                // Save data list with coordinates to the local storage for usage in the next run:
+                localStorage.setItem('coordinates', JSON.stringify(data));
+            }
+
+            // Increment a run number and save it to the local storage for usage in the next run:
+            run++;
+            localStorage.setItem('run', JSON.stringify(run));
+        }
+
+        </script>
+    </head>
+
+    <body onload="clearStorage(); drawOnCanvas();">
+    <!-- body onload="clearStorage(); drawOnCanvas(5, 'all');" -->
+        <canvas id="canvas_1" style="border:1px solid #000000;" width="300px" height="300px">
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+        <p>
+             <button onclick="drawOnCanvas()">Refresh</button>
+             <!-- button onclick="drawOnCanvas(5, 'all')">Refresh</button -->
+        </p>
+    </body>
+
+</html>
+
