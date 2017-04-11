@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 
-        <!--
-            Author: Maksim Rakitin
-            Email : maxim.rakitin@gmail.com
-            Date  : 2015-02-16
-            Description: The code for Exercise 2 (MARVEL Software Engineer/Web Data Engineer positions)
+    <!--
+        Author: Maksim Rakitin
+        Date  : 2015-02-16
+        Description: The code for Exercise 2
 
-            Aim: Create a web page to graphically visualize points (whose coordinates are obtained from
-            a REST API) inside a two-dimensional rectangle in a web page. Update the coordinates
-            upon user request and make older points fade out.
+        Aim: Create a web page to graphically visualize points (whose coordinates are obtained from
+        a REST API) inside a two-dimensional rectangle in a web page. Update the coordinates
+        upon user request and make older points fade out.
 
-            Task: You have to prepare an HTML web page that loads at launch time the coordinates of the
-            points from the above API and visualizes each point as a red dot on the page.
-        -->
+        Task: You have to prepare an HTML web page that loads at launch time the coordinates of the
+        points from the above API and visualizes each point as a red dot on the page.
+    -->
 
-        <title>Maksim Rakitin: Exercise 2 (MARVEL Software Engineer/Web Data Engineer positions)</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <script>
+    <title>Maksim Rakitin: Exercise</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
 
         // The function gets data from the specified REST API server:
         function getData() {
             var json_data = new XMLHttpRequest();
-            json_data.open("GET", "http://theossrv2.epfl.ch/aiida_assignment2/api/points/", false);
+            json_data.open("GET", "/points", false);
             json_data.send();
 
             return json_data.response;
@@ -159,19 +158,20 @@
             localStorage.setItem('run', JSON.stringify(run));
         }
 
-        </script>
-    </head>
 
-    <body onload="clearStorage(); drawOnCanvas();">
-    <!-- body onload="clearStorage(); drawOnCanvas(5, 'all');" -->
-        <canvas id="canvas_1" style="border:1px solid #000000;" width="300px" height="300px">
-            This text is displayed if your browser does not support HTML5 Canvas.
-        </canvas>
-        <p>
-             <button onclick="drawOnCanvas()">Refresh</button>
-             <!-- button onclick="drawOnCanvas(5, 'all')">Refresh</button -->
-        </p>
-    </body>
+    </script>
+</head>
+
+<body onload="clearStorage(); drawOnCanvas();">
+<!-- body onload="clearStorage(); drawOnCanvas(5, 'all');" -->
+<canvas id="canvas_1" style="border:1px solid #000000;" width="300px" height="300px">
+    This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+<p>
+    <button onclick="drawOnCanvas()">Refresh</button>
+    <!-- button onclick="drawOnCanvas(5, 'all')">Refresh</button -->
+</p>
+</body>
 
 </html>
 

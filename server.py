@@ -7,6 +7,7 @@ import os
 import time
 
 import flask
+import requests
 
 import weather.weather as w
 
@@ -108,6 +109,17 @@ def favicon():
     )
 
 
+@app.route('/points')
+def points():
+    """REST API proxying from http://theossrv2.epfl.ch/aiida_assignment2/api/points/"""
+    url = 'http://theossrv2.epfl.ch/aiida_assignment2/api/points/'
+    data = requests.get(url=url)
+    try:
+        return flask.jsonify(json.loads(data.text))
+    except:
+        raise ValueError('Server response cannot be converted to JSON.')
+
+
 @app.route('/presentations')
 def presentations():
     """Shows a list of selected presentations"""
@@ -149,17 +161,21 @@ def _as_attachment(response, content_type, filename):
     return response
 
 
+def _dump_json(d, indent=4, separators=(',', ': '), sort_keys=True):
+    return json.dumps(
+        d,
+        indent=indent,
+        separators=separators,
+        sort_keys=sort_keys,
+    )
+
+
 def _get_weather(location, debug=False):
     try:
         conditions = w.get_current_conditions(location['Key'], details=True)
     except TypeError:
         raise ValueError('Conditions cannot be found for the remote address {}'.format(_remote_address()))
-    w_json = json.dumps(
-        conditions,
-        indent=4,
-        separators=(',', ': '),
-        sort_keys=True,
-    )
+    w_json = _dump_json(conditions)
     if debug:
         print('Weather: {}'.format(w_json))
     fmt = u'{}'
