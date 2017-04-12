@@ -10,7 +10,7 @@ import flask
 import requests
 
 import weather.weather as w
-from lib.bokeh import bokeh_plot
+from lib.bokeh_plot import bokeh_plot
 
 static_folder = os.path.abspath('static')
 template_folder = os.path.join(static_folder, 'html')
