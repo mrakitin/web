@@ -2,9 +2,9 @@ import os
 
 import flask
 
-static_folder = os.path.abspath('static')
-template_folder = os.path.join(static_folder, 'html')
-json_folder = os.path.join(static_folder, 'json')
+STATIC_FOLDER = os.path.abspath('static')
+TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
+JSON_FOLDER = os.path.join(STATIC_FOLDER, 'json')
 OWNER = 'Maksim Rakitin'
 ALT_NAMES = ['Maxim Rakitin']
 ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'Applied Technologies',

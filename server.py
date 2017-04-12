@@ -11,12 +11,12 @@ import requests
 
 import weather.weather as w
 from lib.bokeh_plot import bokeh_plot
-from lib.config import render_template, static_folder, template_folder, json_folder, OWNER, USER
+from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, OWNER, USER
 
 app = flask.Flask(
     __name__,
-    static_folder=static_folder,
-    template_folder=template_folder,
+    static_folder=STATIC_FOLDER,
+    template_folder=TEMPLATE_FOLDER,
 )
 app.register_blueprint(bokeh_plot)
 
@@ -89,7 +89,7 @@ def weather(postal=11767):
 def favicon():
     """Routes to favicon.ico file."""
     return flask.send_from_directory(
-        os.path.join(static_folder, 'img'),
+        os.path.join(STATIC_FOLDER, 'img'),
         'favicon.ico',
         mimetype='image/vnd.microsoft.icon',
     )
@@ -175,7 +175,7 @@ def _get_weather(location, debug=False):
 
 
 def _read_json(json_file, data_format=None):
-    json_file = os.path.join(json_folder, json_file)
+    json_file = os.path.join(JSON_FOLDER, json_file)
     with open(json_file) as f:
         data = json.load(f, object_pairs_hook=collections.OrderedDict)
         data = collections.OrderedDict(reversed(list(data.items())))

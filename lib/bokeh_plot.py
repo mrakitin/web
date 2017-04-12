@@ -4,7 +4,7 @@ from bokeh.plotting import figure
 from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 
-from lib.config import render_template, static_folder, template_folder
+from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER
 
 colors = {
     'Black': '#000000',
@@ -13,7 +13,7 @@ colors = {
     'Blue': '#0000FF',
 }
 
-bokeh_plot = flask.Blueprint('bokeh_plot', __name__, static_folder=static_folder, template_folder=template_folder)
+bokeh_plot = flask.Blueprint('bokeh_plot', __name__, static_folder=STATIC_FOLDER, template_folder=TEMPLATE_FOLDER)
 
 
 @bokeh_plot.route('/bokeh')
