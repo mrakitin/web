@@ -11,10 +11,7 @@ import requests
 
 import weather.weather as w
 from lib.bokeh_plot import bokeh_plot
-
-static_folder = os.path.abspath('static')
-template_folder = os.path.join(static_folder, 'html')
-json_folder = os.path.join(static_folder, 'json')
+from lib.config import render_template, static_folder, template_folder, json_folder, OWNER, USER
 
 app = flask.Flask(
     __name__,
@@ -23,23 +20,10 @@ app = flask.Flask(
 )
 app.register_blueprint(bokeh_plot)
 
-OWNER = 'Maksim Rakitin'
-ALT_NAMES = ['Maxim Rakitin']
-ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'Applied Technologies',
-                 'Rocket Software']
-TOPICS = ['science', 'physics', 'chemistry', 'software development', 'Python']
-KEYWORDS = '{}, {}, {}, {}'.format(
-    OWNER,
-    ', '.join(ALT_NAMES),
-    ', '.join(ORGANIZATIONS),
-    ', '.join(TOPICS),
-)
-USER = 'Guest'
-
 
 @app.route('/')
 def index():
-    return _render_template(
+    return render_template(
         'index.html',
         title="Welcome to {}'s web page!".format(OWNER),
         user=USER,
@@ -63,7 +47,7 @@ def cv(as_attachment=True):
 @app.route('/ip/')
 def ip():
     ip_info = w.get_external_ip(ip=_remote_address())
-    return _render_template(
+    return render_template(
         'ip.html',
         title='Your IP info',
         ip_info=ip_info,
@@ -75,7 +59,7 @@ def ip():
 @app.route('/myweather/')
 def my_weather():
     remote_addr = _remote_address()
-    return _render_template(
+    return render_template(
         'weather.html',
         title='My Weather',
         parameter={'name': 'your IP address', 'value': remote_addr},
@@ -90,7 +74,7 @@ def my_weather():
 def weather(postal=11767):
     try:
         postal = str(postal)
-        return _render_template(
+        return render_template(
             'weather.html',
             title='Weather',
             parameter={'name': 'postal', 'value': postal},
@@ -126,7 +110,7 @@ def points():
 def presentations():
     """Shows a list of selected presentations"""
     data = _read_json(json_file='presentations.json', data_format='pdf')
-    return _render_template(
+    return render_template(
         'table.html',
         title='Presentations',
         data=data,
@@ -138,7 +122,7 @@ def presentations():
 def projects():
     """Shows a list of selected projects"""
     data = _read_json(json_file='projects.json')
-    return _render_template(
+    return render_template(
         'table.html',
         title='Projects',
         data=data,
@@ -209,14 +193,6 @@ def _remote_address():
     if remote_addr == '127.0.0.1':
         remote_addr = w.get_external_ip()['ip']
     return remote_addr
-
-
-def _render_template(*args, **kwargs):
-    if 'owner' not in kwargs.keys():
-        kwargs['owner'] = OWNER
-    if 'keywords' not in kwargs.keys():
-        kwargs['keywords'] = KEYWORDS
-    return flask.render_template(*args, **kwargs)
 
 
 def _time(time_format='%Y-%m-%d %H:%M:%S'):

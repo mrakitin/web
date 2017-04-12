@@ -1,10 +1,10 @@
-import os
-
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure
 from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
+
+from lib.config import render_template, static_folder, template_folder
 
 colors = {
     'Black': '#000000',
@@ -12,10 +12,6 @@ colors = {
     'Green': '#00FF00',
     'Blue': '#0000FF',
 }
-
-static_folder = os.path.abspath('static')
-template_folder = os.path.join(static_folder, 'html')
-json_folder = os.path.join(static_folder, 'json')
 
 bokeh_plot = flask.Blueprint('bokeh_plot', __name__, static_folder=static_folder, template_folder=template_folder)
 
@@ -42,8 +38,9 @@ def polynomial():
     css_resources = INLINE.render_css()
 
     script, div = components(fig)
-    html = flask.render_template(
+    html = render_template(
         'embed.html',
+        title='Bokeh example',
         plot_script=script,
         plot_div=div,
         js_resources=js_resources,
