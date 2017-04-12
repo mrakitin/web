@@ -10,6 +10,7 @@ import flask
 import requests
 
 import weather.weather as w
+from lib.bokeh import bokeh_plot
 
 static_folder = os.path.abspath('static')
 template_folder = os.path.join(static_folder, 'html')
@@ -20,6 +21,7 @@ app = flask.Flask(
     static_folder=static_folder,
     template_folder=template_folder,
 )
+app.register_blueprint(bokeh_plot)
 
 OWNER = 'Maksim Rakitin'
 ALT_NAMES = ['Maxim Rakitin']
