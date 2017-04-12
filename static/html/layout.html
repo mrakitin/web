@@ -12,11 +12,25 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/static/css/bootstrap-social.css" rel="stylesheet" media="screen">
     <link href="/static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="/static/css/style.css" rel="stylesheet" media="screen">
     <link href="/static/css/pocoo.css" rel="stylesheet" media="screen">
+    <link href="/static/css/jquery-ui.css" rel="stylesheet" media="screen">
+    <link href="/static/css/style.css" rel="stylesheet" media="screen">
     <script src="/static/js/jquery-1.10.2.min.js" type=text/javascript></script>
     <script src="/static/js/bootstrap.min.js" type=text/javascript></script>
     <script src='/static/js/pocoo.js' type=text/javascript></script>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker({
+          firstDay: 1,
+          hideIfNoPrevNext: true,
+          beforeShowDay: $.datepicker.noWeekends,
+        });
+        $( "#datepicker" ).datepicker("option", "disabled", true);
+      } );
+
+    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -65,6 +79,7 @@
                         <li><a href="https://github.com/mrakitin" target="_blank">GitHub</a></li>
                         <li><a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank">LinkedIn</a></li>
                         <li><a href="https://mail.yandex.com/?pdd_domain=mrakitin.xyz" target="_blank">Mail for domain</a></li>
+                        <li><div id="datepicker"></div></li>
                     </ul>
                 </li>
             </ul>
