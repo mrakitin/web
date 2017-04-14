@@ -34,6 +34,16 @@
             "height": "500px"
         }
     },
+    "2015.10": {
+        "place": "Stony Brook University (SUNY)",
+        "title": "USPEX online utilities - assistance with visualization of 3d-molecules",
+        "link": "http://han.ess.sunysb.edu/zmatrix2",
+        "example": {
+            "link": "/static/projects/3d-molecule.html",
+            "width": "100%",
+            "height": "500px"
+        }
+    },
     "2015.12-present": {
         "place": "Brookhaven National Laboratory (BNL)",
         "title": "SRW",

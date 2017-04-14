@@ -9,17 +9,18 @@
     <meta name="copyright" content="Copyright 2017 by {{owner}}">
     <title>{{title}}</title>
     <link href="/static/img/favicon.ico" rel="icon">
+    <!-- Styles: -->
+    <link href="/static/css/jquery-ui.css" rel="stylesheet" media="screen">
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/static/css/bootstrap-social.css" rel="stylesheet" media="screen">
     <link href="/static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="/static/css/pocoo.css" rel="stylesheet" media="screen">
-    <link href="/static/css/jquery-ui.css" rel="stylesheet" media="screen">
     <link href="/static/css/style.css" rel="stylesheet" media="screen">
-    <script src="/static/js/jquery-1.10.2.min.js" type=text/javascript></script>
+    <!-- JS libs: -->
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
     <script src="/static/js/bootstrap.min.js" type=text/javascript></script>
     <script src='/static/js/pocoo.js' type=text/javascript></script>
-    <script src="/static/js/jquery-1.12.4.min.js"></script>
-    <script src="/static/js/jquery-ui.min.js"></script>
     <script>
       $( function() {
         $( "#datepicker" ).datepicker({
@@ -27,7 +28,7 @@
           hideIfNoPrevNext: true,
           beforeShowDay: $.datepicker.noWeekends,
         });
-        $( "#datepicker" ).datepicker("option", "disabled", true);
+        $( "#datepicker" ).datepicker("option", "disabled", false);
       } );
 
     </script>
