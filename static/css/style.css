@@ -49,6 +49,7 @@ td.date-field {
 }
 td.place-field {
     min-width: 260px;
+    text-align: right;
 }
 th, td {
     padding: 5px;
