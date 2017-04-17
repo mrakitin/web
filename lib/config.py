@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import flask
@@ -20,6 +21,11 @@ KEYWORDS = '{}, {}, {}, {}'.format(
 USER = 'Guest'
 TITLE = OWNER  # default title
 
+# Date format of the last update:
+DATE_FORMAT = {
+    'iso': '%Y-%m-%d %H:%M:%S %z',
+}
+
 
 def render_template(*args, **kwargs):
     if 'owner' not in kwargs.keys():
@@ -33,10 +39,28 @@ def render_template(*args, **kwargs):
     return flask.render_template(*args, **kwargs)
 
 
-def _repo_last_update(repo_path='.'):
-    try:
-        g = git.Git(repo_path)
-        last_updated = g.log(-1, '--format=%cd', '--date=iso')
-    except:
-        last_updated = None
+def _repo_last_update(repo_path='.', status_file='updated', date_format='iso'):
+    last_updated = None
+    if os.path.isfile(status_file):
+        with open(status_file) as f:
+            last_updated = _validate_date(
+                f.read(),
+                date_format=DATE_FORMAT[date_format]
+            )
+    else:
+        try:
+            g = git.Git(repo_path)
+            last_updated = _validate_date(
+                g.log(-1, '--format=%cd', '--date={}'.format(date_format)),
+                date_format=DATE_FORMAT[date_format]
+            )
+        except:
+            pass
     return last_updated
+
+
+def _validate_date(date_text, date_format):
+    try:
+        return datetime.datetime.strptime(date_text, date_format).strftime(date_format)
+    except ValueError:
+        return None
