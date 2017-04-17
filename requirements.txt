@@ -1,4 +1,5 @@
 Flask
 bokeh
 gitpython
+python-dateutil
 git+https://github.com/mrakitin/weather

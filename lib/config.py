@@ -1,6 +1,6 @@
-import datetime
 import os
 
+import dateutil.parser
 import flask
 import git
 
@@ -61,6 +61,6 @@ def _repo_last_update(repo_path='.', status_file='updated', date_format='iso'):
 
 def _validate_date(date_text, date_format):
     try:
-        return datetime.datetime.strptime(date_text, date_format).strftime(date_format)
+        return dateutil.parser.parse(date_text).strftime(date_format)
     except ValueError:
         return None
