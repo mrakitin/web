@@ -85,6 +85,13 @@ th {
 #table {
     padding: 10px;
 }
+#update-date {
+    position: absolute;
+    bottom: 5px;
+    font-size: 10px;
+    color: gray;
+    padding: 5px;
+}
 #visitorsmap {
     position: absolute;
     top: 5px;

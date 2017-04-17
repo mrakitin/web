@@ -1,3 +1,4 @@
 Flask
 bokeh
+gitpython
 git+https://github.com/mrakitin/weather

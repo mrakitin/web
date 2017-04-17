@@ -1,6 +1,7 @@
 import os
 
 import flask
+import git
 
 STATIC_FOLDER = os.path.abspath('static')
 TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
@@ -27,4 +28,15 @@ def render_template(*args, **kwargs):
         kwargs['keywords'] = KEYWORDS
     if 'title' not in kwargs.keys():
         kwargs['title'] = TITLE
+    if 'last_updated' not in kwargs.keys():
+        kwargs['last_updated'] = _repo_last_update()
     return flask.render_template(*args, **kwargs)
+
+
+def _repo_last_update(repo_path='.'):
+    try:
+        g = git.Git(repo_path)
+        last_updated = g.log(-1, '--format=%cd', '--date=iso')
+    except:
+        last_updated = None
+    return last_updated
