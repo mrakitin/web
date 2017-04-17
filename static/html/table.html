@@ -9,7 +9,9 @@
     </tr>
     {% for k, v in data.items() %}
     <tr>
-        <td id="date-field">{{k}}</td>
+        <td class="date-field" id="{{k}}">{{k}}
+            <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
+        </td>
         <td><a href="{{v['link']}}" target="{{target}}">{{v['title']}}</a></td>
         <td>{{v['place']}}</td>
     </tr>
@@ -17,8 +19,12 @@
     <tr>
         <td></td>
         <td colspan="2" class="centered">Example:<br>
-            <iframe width="{{v['example']['width']}}" height="{{v['example']['height']}}" frameborder="0" scrolling="no"
-                    src="{{v['example']['link']}}" style="border:1px dotted grey"></iframe>
+            {% if 'link' in v['example'] %}
+            <iframe class="iframe" width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example']['link']}}" scrolling="no"></iframe>
+            {% endif %}
+            {% if 'image' in v['example'] %}
+            <img width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example']['image']}}">
+            {% endif %}
         </td>
     </tr>
     {% endif %}

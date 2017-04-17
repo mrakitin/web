@@ -34,6 +34,17 @@
             "height": "500px"
         }
     },
+    "2015.07": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Prototype of the TkInter GUI for SRW (demo for a job interview)",
+        "link": "https://github.com/mrakitin/SRW-gui",
+        "example": {
+            "image": "/static/img/SRW-gui.png",
+            "width": "100%",
+            "height": "100%"
+        }
+    },
+
     "2015.10": {
         "place": "Stony Brook University (SUNY)",
         "title": "USPEX online utilities - assistance with visualization of 3d-molecules",
