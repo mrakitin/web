@@ -16,9 +16,6 @@ body {
     position: relative;
     margin: auto;
 }
-.date-field {
-    min-width: 140px;
-}
 .footer {
     position: absolute;
     bottom: 0;
@@ -46,6 +43,12 @@ a.headerlink {
 td.date-field:hover > a.headerlink {
     visibility: visible;
     color: #444;
+}
+td.date-field {
+    min-width: 140px;
+}
+td.place-field {
+    min-width: 260px;
 }
 th, td {
     padding: 5px;
