@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 
 import dateutil.parser
@@ -7,8 +9,13 @@ import git
 STATIC_FOLDER = os.path.abspath('static')
 TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
 JSON_FOLDER = os.path.join(STATIC_FOLDER, 'json')
+CV_FOLDER = os.path.join(os.path.dirname(os.getcwd()), 'CV')
+CV_PDF = 'RakitinMS_CV.pdf'
+CV_TEX = 'CV.tex'
+CV_BIB = 'publications.bib'
 OWNER = 'Maksim Rakitin'
 ALT_NAMES = ['Maxim Rakitin']
+BIB_NAMES = ['Rakitin, Maksim', 'Rakitin, Maksim S.', 'Rakitin, M. S.']
 ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'Applied Technologies',
                  'Rocket Software']
 TOPICS = ['science', 'physics', 'chemistry', 'software development', 'Python']

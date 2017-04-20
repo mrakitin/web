@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h2 class="centered">Selected {{title.lower()}}:</h2>
+<h2 class="centered">{{'Selected ' if title.lower() != 'publications' else ''}}{{title.lower() if title.lower() != 'publications' else title}}:</h2>
 <table>
     <tr>
         <th>Date:</th>
@@ -9,7 +9,7 @@
     </tr>
     {% for k, v in data.items() %}
     <tr>
-        <td class="date-field" id="{{k}}">{{k}}
+        <td class="date-field" id="{{k}}">{{k if not 'key' in v else v['key']}}
             <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
         </td>
         <td><a href="{{v['link']}}" target="{{target}}">{{v['title']}}</a></td>

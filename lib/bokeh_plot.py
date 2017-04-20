@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure

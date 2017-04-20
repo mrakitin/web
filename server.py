@@ -10,8 +10,9 @@ import flask
 import requests
 
 import weather.weather as w
+from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
-from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, OWNER, USER
+from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, CV_FOLDER, CV_PDF, OWNER, USER
 
 app = flask.Flask(
     __name__,
@@ -19,6 +20,7 @@ app = flask.Flask(
     template_folder=TEMPLATE_FOLDER,
 )
 app.register_blueprint(bokeh_plot)
+app.register_blueprint(bibtex_pubs)
 
 
 @app.route('/')
@@ -33,13 +35,12 @@ def index():
 @app.route('/cv')
 @app.route('/CV')
 def cv(as_attachment=True):
-    filename = 'RakitinMS_CV.pdf'
-    mimetype = os.path.splitext(filename)[1]
-    filepath = os.path.join(os.path.dirname(os.getcwd()), 'CV/{}'.format(filename))
+    mimetype = os.path.splitext(CV_PDF)[1]
+    filepath = os.path.join(CV_FOLDER, CV_PDF)
     return flask.send_file(
         filepath,
         as_attachment=as_attachment,
-        attachment_filename=filename,
+        attachment_filename=CV_PDF,
         mimetype='application/{}'.format(mimetype),
     )
 
@@ -178,7 +179,7 @@ def _read_json(json_file, data_format=None):
     json_file = os.path.join(JSON_FOLDER, json_file)
     with open(json_file) as f:
         data = json.load(f, object_pairs_hook=collections.OrderedDict)
-        data = collections.OrderedDict(reversed(list(data.items())))
+        data = _reverse(data)
     if data_format:
         for k in data.keys():
             data[k]['link'] = os.path.join('/static', data_format, data[k]['link'])
@@ -193,6 +194,10 @@ def _remote_address():
     if remote_addr == '127.0.0.1':
         remote_addr = w.get_external_ip()['ip']
     return remote_addr
+
+
+def _reverse(d):
+    return collections.OrderedDict(reversed(list(d.items())))
 
 
 def _time(time_format='%Y-%m-%d %H:%M:%S'):
