@@ -52,11 +52,20 @@ def publications(version='short'):
             'key': _clear_dashes(e['year'])
         }
     # data = _reverse(data)  # it's already sorted as necessary
+    uri = flask.request.path
+    kwargs = {
+        'button_short': 'btn-primary',
+        'button_long': 'btn-secondary',
+    }
+    if uri == '/publications/long':
+        kwargs['button_short'] = 'btn-secondary'
+        kwargs['button_long'] = 'btn-primary'
     return render_template(
         'table.html',
         title='Publications',
         data=data,
         target='_blank',
+        **kwargs
     )
 
 

@@ -31,6 +31,10 @@ body {
     clear: left;
     padding-top: 10px;
 }
+.right-corner {
+    text-align: right;
+    padding-bottom: 10px;
+}
 div.center {
     width: 500px;
     display: block;
