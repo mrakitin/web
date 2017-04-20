@@ -15,8 +15,16 @@ bibtex_pubs = flask.Blueprint('bibtex_pubs', __name__, static_folder=STATIC_FOLD
 
 
 @bibtex_pubs.route('/publications')
-def publications():
+@bibtex_pubs.route('/publications/')
+@bibtex_pubs.route('/publications/<version>')
+def publications(version='short'):
     """Shows a list of publications"""
+
+    if version in ['short', 'long']:
+        first_letters_only = True if version == 'short' else False
+    else:
+        first_letters_only = True  # short by default
+
     bib_file = os.path.join(CV_FOLDER, CV_BIB)
     bib_database = pybtex.database.parse_file(bib_file)
     data = collections.OrderedDict({})
@@ -32,10 +40,7 @@ def publications():
         s = re.sub(_latex_formula('^'), '<sup><em>\g<formula_text></em></sup>', s)
         s = re.sub(_latex_formula(''), '<em>\g<formula_text></em>', s)
         s = re.sub(_latex_block(), '\g<block_text>', s)
-        authors = '{}<br>'.format(
-            ', '.join([str(x) for x in p.persons['author']])) if 'author' in p.persons.keys() else ''
-        for name in BIB_NAMES:
-            authors = _boldify_author(authors, name)
+        authors = _format_authors(p.persons, first_letters_only=first_letters_only)
         pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
         pages = '{}, '.format(e['pages']) if 'pages' in e.keys() else ''
@@ -63,6 +68,28 @@ def _clear_dashes(s):
     return s.replace('--', '-')
 
 
+def _format_authors(p, first_letters_only):
+    authors_list = []
+    if 'author' in p.keys():
+        for a in p['author']:
+            last_names = _render_names(a.rich_last_names)
+            first_names = _render_names(a.rich_first_names, first_letters_only=first_letters_only)
+            middle_names = _render_names(a.rich_middle_names, first_letters_only=first_letters_only)
+            if not middle_names:
+                name_format = '{} {}'
+                l = [first_names, last_names]
+            else:
+                name_format = '{} {} {}'
+                l = [first_names, middle_names, last_names]
+            authors_list.append(name_format.format(*l))
+    authors = ', '.join(authors_list)
+    if authors:
+        authors = '{}<br>'.format(authors)
+    for name in BIB_NAMES:
+        authors = _boldify_author(authors, name)
+    return authors
+
+
 def _latex_block():
     return re.compile(u'''{
                 (?P<block_text>([^{}]*{[^{}]*})*.*?)
@@ -81,3 +108,24 @@ def _latex_tag(tag):
                 \\\\''' + tag + '''{
                 (?P<emph_text>([^{}]*{[^{}]*})*.*?)
                 }''', re.VERBOSE)
+
+
+def _render_names(names, first_letters_only=False, sep='-'):
+    if not names:
+        return ''
+    if not first_letters_only:
+        return ' '.join([x.render_as('text') for x in names])
+    else:
+        processed_names = []
+        for n in names:
+            n = n.render_as('text')
+            if re.search(sep, n):
+                n = n.split(sep)
+                r = []
+                for p in n:
+                    r.append(p[0])
+                r = '.-'.join(r)
+            else:
+                r = n[0]
+            processed_names.append(r)
+        return '{}.'.format('. '.join(processed_names))

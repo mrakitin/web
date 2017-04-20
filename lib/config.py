@@ -15,7 +15,8 @@ CV_TEX = 'CV.tex'
 CV_BIB = 'publications.bib'
 OWNER = 'Maksim Rakitin'
 ALT_NAMES = ['Maxim Rakitin']
-BIB_NAMES = ['Rakitin, Maksim', 'Rakitin, Maksim S.', 'Rakitin, M. S.']
+BIB_NAMES = ['Rakitin, Maksim', 'Rakitin, Maksim S.', 'Rakitin, M. S.', 'Maksim S. Rakitin', 'M.S. Rakitin',
+             'M. Rakitin', 'M. S. Rakitin', 'Maksim Rakitin']
 ORGANIZATIONS = ['Brookhaven National Laboratory', 'Stony Brook University', 'SUSU', 'Applied Technologies',
                  'Rocket Software']
 TOPICS = ['science', 'physics', 'chemistry', 'software development', 'Python']
