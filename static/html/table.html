@@ -2,17 +2,31 @@
 {% block content %}
 <h2 class="centered">{{'Selected ' if title.lower() != 'publications' else ''}}{{title.lower() if title.lower() !=
     'publications' else title}}:</h2>
-{% if title.lower() == 'publications' %}
-<div class="right-corner">
-    <a class="btn btn-default {{button_short}} btn-sm" href="/publications" target="_self">Short names</a>
-    <a class="btn btn-default {{button_long}} btn-sm" href="/publications/long" target="_self">Long names</a>
+<div class="buttons-pane">
+    <div class="flex-item left-corner">
+        <a class="btn btn-default btn-success btn-sm" href="/cv" target="_self">Download CV</a>
+        {% if title.lower() == 'publications' %}
+        <a class="btn btn-default btn-warning btn-sm" href="/cv/bib" target="_self">Download BibTeX</a>
+        {% endif %}
+    </div>
+    {% if title.lower() == 'publications' %}
+    <div class="flex-item right-corner">
+        <a class="btn btn-default {{button_short}} btn-sm" href="/publications" target="_self">Short names</a>
+        <a class="btn btn-default {{button_long}} btn-sm" href="/publications/long" target="_self">Long names</a>
+    </div>
+    {% endif %}
 </div>
-{% endif %}
 <table>
     <tr>
+        {% if title.lower() != 'publications' %}
         <th>Date:</th>
         <th>Title:</th>
         <th>Place:</th>
+        {% else %}
+        <th>Year:</th>
+        <th>Title:</th>
+        <th>Authors and Journal:</th>
+        {% endif %}
     </tr>
     {% for k, v in data.items() %}
     <tr>

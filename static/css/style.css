@@ -5,6 +5,9 @@ html {
 body {
     margin-bottom: 144px;
 }
+.buttons-pane {
+    display: flex;
+}
 .centered {
     text-align: center;
     padding-bottom: 10px;
@@ -16,6 +19,9 @@ body {
     position: relative;
     margin: auto;
 }
+.flex-item {
+    flex-grow: 1;
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -26,6 +32,10 @@ body {
 .iframe {
     border: 1px dotted grey;
     overflow: hidden;
+}
+.left-corner {
+    text-align: left;
+    padding-bottom: 10px;
 }
 .newline {
     clear: left;

@@ -12,7 +12,8 @@ import requests
 import weather.weather as w
 from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
-from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, CV_FOLDER, CV_PDF, OWNER, USER
+from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, CV_FOLDER, CV_PDF, CV_BIB, OWNER, \
+    USER
 
 app = flask.Flask(
     __name__,
@@ -33,14 +34,22 @@ def index():
 
 
 @app.route('/cv')
-@app.route('/CV')
-def cv(as_attachment=True):
-    mimetype = os.path.splitext(CV_PDF)[1]
-    filepath = os.path.join(CV_FOLDER, CV_PDF)
+@app.route('/cv/')
+@app.route('/cv/<bib>')
+def cv(bib=None, as_attachment=True):
+    if bib != 'bib':
+        mimetype = os.path.splitext(CV_PDF)[1]
+        cv_file = CV_PDF
+        attachment_filename = cv_file
+    else:
+        mimetype = 'x-bibtex'
+        cv_file = CV_BIB
+        attachment_filename = 'mrakitin_{}'.format(cv_file)
+    filepath = os.path.join(CV_FOLDER, cv_file)
     return flask.send_file(
         filepath,
         as_attachment=as_attachment,
-        attachment_filename=CV_PDF,
+        attachment_filename=attachment_filename,
         mimetype='application/{}'.format(mimetype),
     )
 
