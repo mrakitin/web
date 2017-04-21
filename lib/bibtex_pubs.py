@@ -40,16 +40,19 @@ def publications(version='short'):
         s = re.sub(_latex_formula('^'), '<sup><em>\g<formula_text></em></sup>', s)
         s = re.sub(_latex_formula(''), '<em>\g<formula_text></em>', s)
         s = re.sub(_latex_block(), '\g<block_text>', s)
+        s =  _clear_dashes(s)
         authors = _format_authors(p.persons, first_letters_only=first_letters_only)
         pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
         pages = '{}, '.format(e['pages']) if 'pages' in e.keys() else ''
-        place = '{}<em>{}</em>, {}{}({})'.format(authors, pub_type, volume, pages, e['year'])
+        journal = _clear_dashes('<em>{}</em>, {}{}({})'.format(pub_type, volume, pages, e['year']))
         data[k] = {
-            'place': flask.Markup(_clear_dashes(place)),
-            'title': flask.Markup(_clear_dashes(s)),
+            'year': flask.Markup(_clear_dashes(e['year'])),
+            'title': flask.Markup(s),
             'link': e['url'],
-            'key': _clear_dashes(e['year'])
+            'authors': flask.Markup(authors),
+            'journal': flask.Markup(journal),
+            'key': 'year',
         }
     # data = _reverse(data)  # it's already sorted as necessary
     uri = flask.request.path
@@ -73,8 +76,8 @@ def _boldify_author(s, a):
     return s.replace(a, '<b>{}</b>'.format(a))
 
 
-def _clear_dashes(s):
-    return s.replace('--', '-')
+def _clear_dashes(s, replace='&ndash;'):
+    return s.replace('--', replace)
 
 
 def _format_authors(p, first_letters_only):
@@ -92,8 +95,6 @@ def _format_authors(p, first_letters_only):
                 l = [first_names, middle_names, last_names]
             authors_list.append(name_format.format(*l))
     authors = ', '.join(authors_list)
-    if authors:
-        authors = '{}<br>'.format(authors)
     for name in BIB_NAMES:
         authors = _boldify_author(authors, name)
     return authors

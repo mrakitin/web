@@ -4,6 +4,7 @@ html {
 }
 body {
     margin-bottom: 144px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .buttons-pane {
     display: flex;
@@ -22,6 +23,9 @@ body {
 .flex-item {
     flex-grow: 1;
 }
+.float {
+    float: left;
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -35,7 +39,13 @@ body {
 }
 .left-corner {
     text-align: left;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+}
+.margin-left {
+    margin: 3px 3px 5px 0px;
+}
+.margin-right {
+    margin: 3px 0px 5px 3px;
 }
 .newline {
     clear: left;
@@ -43,7 +53,7 @@ body {
 }
 .right-corner {
     text-align: right;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 div.center {
     width: 500px;
@@ -59,11 +69,11 @@ td.date-field:hover > a.headerlink {
     color: #444;
 }
 td.date-field {
-    min-width: 140px;
+    /*min-width: 140px;*/
 }
 td.place-field {
-    min-width: 260px;
-    text-align: justify;
+    /*min-width: 260px;*/
+    /*text-align: justify;*/
 }
 th, td {
     padding: 5px;

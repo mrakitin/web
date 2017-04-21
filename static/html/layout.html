@@ -9,9 +9,7 @@
     <meta name="copyright" content="Copyright 2017 by {{owner}}">
     <title>{{title}}</title>
     <!-- Favicons: -->
-    <!--<link href="/static/img/favicon.ico" rel="icon">-->
     <link href="/static/img/favicon.ico" rel="shortcut icon">
-    <link href="/static/img/favicon_anim.gif" rel="icon" type="image/gif">
     <link href="/static/img/favicon_apple.png" rel="apple-touch-icon">
     <!-- Styles: -->
     <link href="/static/css/jquery-ui.css" rel="stylesheet" media="screen">
@@ -33,7 +31,6 @@
         });
         $( "#datepicker" ).datepicker("option", "disabled", false);
       } );
-
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -83,9 +80,13 @@
                         <li class="divider"></li>
                         <li><a href="http://staff.ps.bnl.gov/staff.aspx?id=92991" target="_blank">BNL</a></li>
                         <li><a href="https://github.com/mrakitin" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://mail.yandex.com/?pdd_domain=mrakitin.xyz" target="_blank">Mail for domain</a></li>
-                        <li><div id="datepicker"></div></li>
+                        <li><a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank">LinkedIn</a>
+                        </li>
+                        <li><a href="https://mail.yandex.com/?pdd_domain=mrakitin.xyz" target="_blank">Mail for
+                            domain</a></li>
+                        <li>
+                            <div id="datepicker"></div>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -98,8 +99,10 @@
 </div>
 <div class="footer">
     <div id="centered-icons">
-        <a href="https://github.com/mrakitin/web" target="_blank" class="btn btn-social-icon btn-lg btn-github"><span class="fa fa-github"></span></a>
-        <a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank" class="btn btn-social-icon btn-lg btn-linkedin"><span class="fa fa-linkedin"></span></a>
+        <a href="https://github.com/mrakitin/web" target="_blank" class="btn btn-social-icon btn-lg btn-github"><span
+                class="fa fa-github"></span></a>
+        <a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank"
+           class="btn btn-social-icon btn-lg btn-linkedin"><span class="fa fa-linkedin"></span></a>
     </div>
     {% if last_updated %}
     <div id="update-date">Last updated:<br>{{last_updated}}</div>
@@ -108,7 +111,8 @@
         <!--default color map:-->
         <!--<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=212&d=Oh75ST2sAeR0tsqN5BDB3_wLmNUMcXEG1j5ffRm-zc0&t=m"></script>-->
         <!--bw map:-->
-        <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=212&d=Oh75ST2sAeR0tsqN5BDB3_wLmNUMcXEG1j5ffRm-zc0&t=m&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
+        <script type="text/javascript" id="clustrmaps"
+                src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=212&d=Oh75ST2sAeR0tsqN5BDB3_wLmNUMcXEG1j5ffRm-zc0&t=m&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
     </div>
 </div>
 </body>

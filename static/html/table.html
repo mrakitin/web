@@ -4,53 +4,66 @@
     'publications' else title}}:</h2>
 <div class="buttons-pane">
     <div class="flex-item left-corner">
-        <a class="btn btn-default btn-success btn-sm" href="/cv" target="_self">Download CV</a>
+        <a class="btn btn-default btn-success btn-sm margin-left" href="/cv" target="_self">Download CV</a>
         {% if title.lower() == 'publications' %}
-        <a class="btn btn-default btn-warning btn-sm" href="/cv/bib" target="_self">Download BibTeX</a>
+        <a class="btn btn-default btn-warning btn-sm margin-left" href="/cv/bib" target="_self">Download BibTeX</a>
         {% endif %}
     </div>
     {% if title.lower() == 'publications' %}
     <div class="flex-item right-corner">
-        <a class="btn btn-default {{button_short}} btn-sm" href="/publications" target="_self">Short names</a>
-        <a class="btn btn-default {{button_long}} btn-sm" href="/publications/long" target="_self">Long names</a>
+        <a class="btn btn-default {{button_short}} btn-sm margin-right" href="/publications" target="_self">Short
+            names</a>
+        <a class="btn btn-default {{button_long}} btn-sm margin-right" href="/publications/long" target="_self">Long
+            names</a>
     </div>
     {% endif %}
 </div>
-<table>
-    <tr>
-        {% if title.lower() != 'publications' %}
-        <th>Date:</th>
-        <th>Title:</th>
-        <th>Place:</th>
-        {% else %}
-        <th>Year:</th>
-        <th>Title:</th>
-        <th>Authors and Journal:</th>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            {% if title.lower() != 'publications' %}
+            <th>Date:</th>
+            <th>Title:</th>
+            <th>Place:</th>
+            {% else %}
+            <th>Year:</th>
+            <th>Title:</th>
+            <th>Authors</th>
+            <th>Journal</th>
+            {% endif %}
+        </tr>
+        {% for k, v in data.items() %}
+        <tr>
+            <td class="date-field" id="{{k}}">{{k if not 'key' in v else v[v['key']]}}
+                <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
+            </td>
+            <td><a href="{{v['link']}}" target="{{target}}">{{v['title']}}</a></td>
+            {% if 'place' in v %}
+            <td>{{v['place']}}</td>
+            {% endif %}
+            {% if 'authors' in v %}
+            <td>{{v['authors']}}</td>
+            {% endif %}
+            {% if 'journal' in v %}
+            <td>{{v['journal']}}</td>
+            {% endif %}
+        </tr>
+        {% if 'example' in v %}
+        <tr>
+            <td></td>
+            <td colspan="2" class="centered">Example:<br>
+                {% if 'link' in v['example'] %}
+                <iframe class="iframe" width="{{v['example']['width']}}" height="{{v['example']['height']}}"
+                        src="{{v['example']['link']}}" scrolling="no"></iframe>
+                {% endif %}
+                {% if 'image' in v['example'] %}
+                <img width="{{v['example']['width']}}" height="{{v['example']['height']}}"
+                     src="{{v['example']['image']}}">
+                {% endif %}
+            </td>
+        </tr>
         {% endif %}
-    </tr>
-    {% for k, v in data.items() %}
-    <tr>
-        <td class="date-field" id="{{k}}">{{k if not 'key' in v else v['key']}}
-            <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
-        </td>
-        <td><a href="{{v['link']}}" target="{{target}}">{{v['title']}}</a></td>
-        <td class="place-field">{{v['place']}}</td>
-    </tr>
-    {% if 'example' in v %}
-    <tr>
-        <td></td>
-        <td colspan="2" class="centered">Example:<br>
-            {% if 'link' in v['example'] %}
-            <iframe class="iframe" width="{{v['example']['width']}}" height="{{v['example']['height']}}"
-                    src="{{v['example']['link']}}" scrolling="no"></iframe>
-            {% endif %}
-            {% if 'image' in v['example'] %}
-            <img width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example']['image']}}">
-            {% endif %}
-        </td>
-    </tr>
-    {% endif %}
-    {% endfor %}
-</table>
-
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}
