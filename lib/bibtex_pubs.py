@@ -40,7 +40,7 @@ def publications(version='short'):
         s = re.sub(_latex_formula('^'), '<sup><em>\g<formula_text></em></sup>', s)
         s = re.sub(_latex_formula(''), '<em>\g<formula_text></em>', s)
         s = re.sub(_latex_block(), '\g<block_text>', s)
-        s =  _clear_dashes(s)
+        s = _clear_dashes(s)
         authors = _format_authors(p.persons, first_letters_only=first_letters_only)
         pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
@@ -77,7 +77,7 @@ def _boldify_author(s, a):
 
 
 def _clear_dashes(s, replace='&ndash;'):
-    return s.replace('--', replace)
+    return s.replace('--', '-').replace('-', replace)
 
 
 def _format_authors(p, first_letters_only):
