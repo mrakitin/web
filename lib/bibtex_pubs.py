@@ -29,7 +29,7 @@ def publications(version='short'):
     bib_database = pybtex.database.parse_file(bib_file)
     data = collections.OrderedDict({})
     entries = bib_database.entries
-    for k in entries:
+    for i, k in enumerate(entries):
         p = entries[k]
         e = p.fields
         s = e['title']
@@ -47,6 +47,7 @@ def publications(version='short'):
         pages = '{}, '.format(e['pages']) if 'pages' in e.keys() else ''
         journal = _clear_dashes('<em>{}</em>, {}{}({})'.format(pub_type, volume, pages, e['year']))
         data[k] = {
+            'id': len(entries) - i,
             'year': flask.Markup(_clear_dashes(e['year'])),
             'title': flask.Markup(s),
             'link': e['url'],

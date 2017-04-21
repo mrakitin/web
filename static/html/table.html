@@ -17,13 +17,14 @@
     {% endif %}
 </div>
 <div class="table-responsive">
-    <table class="table">
+    <table id="activity" class="table">
         <tr>
             {% if title.lower() != 'publications' %}
             <th>Date:</th>
             <th>Title:</th>
             <th>Place:</th>
             {% else %}
+            <th class="color-gray">#</th>
             <th>Year:</th>
             <th>Title:</th>
             <th>Authors</th>
@@ -32,6 +33,9 @@
         </tr>
         {% for k, v in data.items() %}
         <tr>
+            {% if 'id' in v %}
+            <td class="color-gray">{{v['id']}}.</td>
+            {% endif %}
             <td class="date-field" id="{{k}}">{{k if not 'key' in v else v[v['key']]}}
                 <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
             </td>
