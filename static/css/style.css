@@ -72,7 +72,7 @@ td.date-field:hover > a.headerlink {
     color: #444;
 }
 td.date-field {
-    /*min-width: 140px;*/
+    white-space: nowrap;
 }
 td.place-field {
     /*min-width: 260px;*/
