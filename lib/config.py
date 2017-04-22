@@ -11,6 +11,7 @@ TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
 JSON_FOLDER = os.path.join(STATIC_FOLDER, 'json')
 CV_FOLDER = os.path.join(os.path.dirname(os.getcwd()), 'CV')
 CV_PDF = 'RakitinMS_CV.pdf'
+CV_PUB = 'RakitinMS_pubs.pdf'
 CV_TEX = 'CV.tex'
 CV_BIB = 'publications.bib'
 OWNER = 'Maksim Rakitin'
