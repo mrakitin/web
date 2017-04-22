@@ -9,7 +9,7 @@ import pybtex.bibtex
 import pybtex.database
 import pybtex.richtext
 
-from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, CV_FOLDER, CV_BIB, BIB_NAMES
+from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, CV_FOLDER, PUB_BIB, BIB_NAMES
 
 bibtex_pubs = flask.Blueprint('bibtex_pubs', __name__, static_folder=STATIC_FOLDER, template_folder=TEMPLATE_FOLDER)
 
@@ -25,7 +25,7 @@ def publications(version='short'):
     else:
         first_letters_only = True  # short by default
 
-    bib_file = os.path.join(CV_FOLDER, CV_BIB)
+    bib_file = os.path.join(CV_FOLDER, PUB_BIB)
     bib_database = pybtex.database.parse_file(bib_file)
     data = collections.OrderedDict({})
     entries = bib_database.entries

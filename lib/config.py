@@ -10,10 +10,6 @@ STATIC_FOLDER = os.path.abspath('static')
 TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
 JSON_FOLDER = os.path.join(STATIC_FOLDER, 'json')
 CV_FOLDER = os.path.join(os.path.dirname(os.getcwd()), 'CV')
-CV_PDF = 'RakitinMS_CV.pdf'
-CV_PUB = 'RakitinMS_pubs.pdf'
-CV_TEX = 'CV.tex'
-CV_BIB = 'publications.bib'
 OWNER = 'Maksim Rakitin'
 ALT_NAMES = ['Maxim Rakitin']
 BIB_NAMES = ['Rakitin, Maksim', 'Rakitin, Maksim S.', 'Rakitin, M. S.', 'Maksim S. Rakitin', 'M.S. Rakitin',
@@ -29,6 +25,14 @@ KEYWORDS = '{}, {}, {}, {}'.format(
 )
 USER = 'Guest'
 TITLE = OWNER  # default title
+
+# CV-related vars:
+AUTHOR = 'RakitinMS'
+CV_TEX = '{}_CV.tex'.format(AUTHOR)
+CV_PDF = '{}_CV.pdf'.format(AUTHOR)
+PUB_TEX = '{}_pubs.tex'.format(AUTHOR)
+PUB_PDF = '{}_pubs.pdf'.format(AUTHOR)
+PUB_BIB = '{}_pubs.bib'.format(AUTHOR)
 
 # Date format of the last update:
 DATE_FORMAT = {
