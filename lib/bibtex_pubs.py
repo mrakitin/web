@@ -34,8 +34,9 @@ def publications(version='short'):
         e = p.fields
         s = e['title']
         s = pybtex.richtext.String(s).render_as('html')
-        for t in ['textit', 'it']:
-            s = re.sub(_latex_tag(t), '<em>\g<emph_text></em>', s)
+        for t in ['textit', 'emph']:
+            s = re.sub(_latex_tag(t), '<em>\g<formatted_text></em>', s)
+        s = re.sub(_latex_tag('textbf'), '<b>\g<formatted_text></b>', s)
         s = re.sub(_latex_formula('_'), '<sub><em>\g<formula_text></em></sub>', s)
         s = re.sub(_latex_formula('^'), '<sup><em>\g<formula_text></em></sup>', s)
         s = re.sub(_latex_formula(''), '<em>\g<formula_text></em>', s)
@@ -44,8 +45,9 @@ def publications(version='short'):
         authors = _format_authors(p.persons, first_letters_only=first_letters_only)
         pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
-        pages = '{}, '.format(e['pages']) if 'pages' in e.keys() else ''
-        journal = _clear_dashes('<em>{}</em>, {}{}({})'.format(pub_type, volume, pages, e['year']))
+        pages = '{} '.format(e['pages']) if 'pages' in e.keys() else ''
+        comma = ',' if 'volume' in e.keys() else ''
+        journal = _clear_dashes('<em>{}</em>{} {}{}({})'.format(pub_type, comma, volume, pages, e['year']))
         data[k] = {
             'id': len(entries) - i,
             'year': flask.Markup(_clear_dashes(e['year'])),
@@ -117,7 +119,7 @@ def _latex_formula(symbol='_'):
 def _latex_tag(tag):
     return re.compile(u'''
                 \\\\''' + tag + '''{
-                (?P<emph_text>([^{}]*{[^{}]*})*.*?)
+                (?P<formatted_text>([^{}]*{[^{}]*})*.*?)
                 }''', re.VERBOSE)
 
 
