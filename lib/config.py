@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import collections
+import glob
 import os
+import re
 
 import dateutil.parser
 import flask
@@ -38,6 +41,50 @@ PUB_BIB = '{}_pubs.bib'.format(AUTHOR)
 DATE_FORMAT = {
     'iso': '%Y-%m-%d %H:%M:%S %z',
 }
+
+
+def get_cv_pdfs():
+    # Map short names from pdfs list to file names:
+    pdf_files = glob.glob(os.path.join(CV_FOLDER, '*.pdf'))
+    pdf_map = {}
+    for f in pdf_files:
+        s = os.path.splitext(os.path.basename(f))[0].split('_')[1]
+        pdf_map[s.lower()] = {
+            'file': f,
+            'orig_name': s,
+        }
+
+    # Map short names from CV sections file to long names:
+    cv_sections = get_cv_sections()
+
+    # Merge two maps:
+    d = collections.OrderedDict({})
+    for s in cv_sections.keys():
+        if s in pdf_map.keys():
+            d[s] = dict([('long_name', cv_sections[s])] + pdf_map[s].items())
+
+    # Add bib-file details manually:
+    d['bib'] = {
+        'long_name': 'BibTeX file',
+        'orig_name': 'bib',
+        'file': os.path.join(CV_FOLDER, PUB_BIB)
+    }
+
+    return d
+
+
+def get_cv_sections():
+    cv_sections = os.path.join(CV_FOLDER, 'src/sections.tex')
+    with open(cv_sections) as f:
+        content = f.readlines()
+    d = collections.OrderedDict({})
+    for c in content:
+        if not re.search('^%', c):
+            s = c.split('\\')[2]
+            short_name = s.split('{')[0]
+            long_name = s.split('{')[1].split('}')[0]
+            d[short_name] = long_name
+    return d
 
 
 def render_template(*args, **kwargs):

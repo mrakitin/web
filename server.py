@@ -12,8 +12,7 @@ import requests
 import weather.weather as w
 from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
-from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, CV_FOLDER, CV_PDF, PUB_PDF, \
-    PUB_BIB, OWNER, USER
+from lib.config import render_template, get_cv_pdfs, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, OWNER, USER
 
 app = flask.Flask(
     __name__,
@@ -35,21 +34,38 @@ def index():
 
 @app.route('/cv')
 @app.route('/cv/')
+def cv():
+    data = get_cv_pdfs()
+    for k in data.keys():
+        if k == 'cv':
+            button_type = 'success'
+        elif k == 'pubs':
+            button_type = 'warning'
+        elif k == 'bib':
+            button_type = 'info'
+        else:
+            button_type = 'basic'
+        data[k]['button_type'] = button_type
+    return render_template(
+        'cv.html',
+        title="{}'s CV".format(OWNER),
+        data=data,
+    )
+
+
 @app.route('/cv/<bib>')
-def cv(bib=None, as_attachment=True):
-    valid_values = ('bib', 'pubs')
+def cv_files(bib=None, as_attachment=True):
+    data = get_cv_pdfs()
+    valid_values = []
+    for k, v in data.items():
+        valid_values.append(v['orig_name'])
     if bib not in valid_values:
-        bib = ''
-    if bib != 'bib':
-        mimetype = os.path.splitext(CV_PDF)[1]
-        cv_file = CV_PDF if bib == '' else PUB_PDF
-    else:
-        mimetype = 'x-bibtex'
-        cv_file = PUB_BIB
-    attachment_filename = cv_file
-    filepath = os.path.join(CV_FOLDER, cv_file)
+        return flask.redirect(flask.url_for('cv'))
+    cv_file = data[bib.lower()]['file']
+    attachment_filename = os.path.basename(cv_file)
+    mimetype = 'x-bibtex' if bib == 'bib' else os.path.splitext(cv_file)[1]
     return flask.send_file(
-        filepath,
+        cv_file,
         as_attachment=as_attachment,
         attachment_filename=attachment_filename,
         mimetype='application/{}'.format(mimetype),
@@ -151,6 +167,14 @@ def robots_txt():
     #     'User-agent: *\nDisallow: /\n',
     #     mimetype='text/plain',
     # )
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template(
+        '404.html',
+        title='Page Not Found',
+    ), 404
 
 
 def _as_attachment(response, content_type, filename):

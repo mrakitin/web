@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2 class="centered">{{title}}:</h2>
+<p class="centered">Here is a list of available CV files:</p>
+<div class="buttons-pane">
+    <div class="flex-item centered">
+        {% for k, v in data.items() %}
+        <a class="btn btn-default btn-{{v['button_type']}} btn-lg margin-left" href="/cv/{{v['orig_name']}}" target="_self">{{v['long_name']}}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
