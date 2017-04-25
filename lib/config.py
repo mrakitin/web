@@ -43,6 +43,8 @@ PUB_BIB = '{}_pubs.bib'.format(AUTHOR)
 DATE_FORMAT = {
     'iso': '%Y-%m-%d %H:%M:%S %z',
 }
+PRESENTATIONS = read_json(json_folder=JSON_FOLDER, json_file='presentations.json', data_format='pdf')
+PROJECTS = read_json(json_folder=JSON_FOLDER, json_file='projects.json')
 SOCIAL = read_json(json_folder=JSON_FOLDER, json_file='social.json', reverse=False)
 
 

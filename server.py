@@ -11,8 +11,9 @@ import requests
 import weather.weather as w
 from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
-from lib.config import render_template, get_cv_pdfs, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, OWNER, USER
-from lib.utils import read_json, dump_json
+from lib.config import render_template, get_cv_pdfs, STATIC_FOLDER, TEMPLATE_FOLDER, PRESENTATIONS, \
+    PROJECTS, OWNER, USER
+from lib.utils import dump_json
 
 app = flask.Flask(
     __name__,
@@ -137,11 +138,10 @@ def points():
 @app.route('/presentations')
 def presentations():
     """Shows a list of selected presentations"""
-    data = read_json(json_folder=JSON_FOLDER, json_file='presentations.json', data_format='pdf')
     return render_template(
         'table.html',
         title='Presentations',
-        data=data,
+        data=PRESENTATIONS,
         target='_self',
     )
 
@@ -149,11 +149,10 @@ def presentations():
 @app.route('/projects')
 def projects():
     """Shows a list of selected projects"""
-    data = read_json(json_folder=JSON_FOLDER, json_file='projects.json')
     return render_template(
         'table.html',
         title='Projects',
-        data=data,
+        data=PROJECTS,
         target='_blank',
     )
 
@@ -202,8 +201,8 @@ def _get_weather(location, debug=False):
 
 
 def _remote_address():
-    if flask.request.headers.getlist("X-Forwarded-For"):
-        remote_addr = flask.request.headers.getlist("X-Forwarded-For")[0]
+    if flask.request.headers.getlist('X-Forwarded-For'):
+        remote_addr = flask.request.headers.getlist('X-Forwarded-For')[0]
     else:
         remote_addr = flask.request.remote_addr
     if remote_addr == '127.0.0.1':
