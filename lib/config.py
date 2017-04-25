@@ -43,6 +43,7 @@ PUB_BIB = '{}_pubs.bib'.format(AUTHOR)
 DATE_FORMAT = {
     'iso': '%Y-%m-%d %H:%M:%S %z',
 }
+SOCIAL = read_json(json_folder=JSON_FOLDER, json_file='social.json', reverse=False)
 
 
 def get_cv_pdfs():
@@ -98,7 +99,7 @@ def render_template(*args, **kwargs):
         kwargs['title'] = TITLE
     if 'last_updated' not in kwargs.keys():
         kwargs['last_updated'] = _repo_last_update()
-    kwargs['social'] = read_json(json_folder=JSON_FOLDER, json_file='social.json', reverse=False)
+    kwargs['social'] = SOCIAL
     return flask.render_template(*args, **kwargs)
 
 
