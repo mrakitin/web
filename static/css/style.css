@@ -40,6 +40,9 @@ body {
     border: 1px dotted grey;
     overflow: hidden;
 }
+.inline-icon {
+    font-size:40px;
+}
 .left-corner {
     text-align: left;
     padding-bottom: 5px;
@@ -54,6 +57,10 @@ body {
     clear: left;
     padding-top: 10px;
 }
+.qr-code {
+    width: 44px;
+    height: 44px;
+}
 .right-corner {
     text-align: right;
     padding-bottom: 5px;
@@ -67,6 +74,14 @@ div.center {
 a.headerlink {
     visibility: hidden;
 }
+table.social {
+    position: absolute;
+    left: 5px;
+    top: 15px;
+}
+table.social td {
+    padding: 3px;
+}
 td.date-field:hover > a.headerlink {
     visibility: visible;
     color: #444;
@@ -77,6 +92,9 @@ td.date-field {
 td.place-field {
     /*min-width: 260px;*/
     /*text-align: justify;*/
+}
+td.rowspan {
+    vertical-align: middle;
 }
 th, td {
     padding: 5px;
@@ -102,7 +120,7 @@ th {
     top: 0;
     z-index: 1
 }
-#image {
+#photo {
     float: left;
     max-width: 100%;
     height: auto;
@@ -114,6 +132,7 @@ th {
 }
 #update-date {
     position: absolute;
+    left: 5px;
     bottom: 5px;
     font-size: 10px;
     color: gray;

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import collections
 import datetime
 import json
 import os
@@ -13,6 +12,7 @@ import weather.weather as w
 from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
 from lib.config import render_template, get_cv_pdfs, STATIC_FOLDER, TEMPLATE_FOLDER, JSON_FOLDER, OWNER, USER
+from lib.utils import read_json, dump_json
 
 app = flask.Flask(
     __name__,
@@ -137,7 +137,7 @@ def points():
 @app.route('/presentations')
 def presentations():
     """Shows a list of selected presentations"""
-    data = _read_json(json_file='presentations.json', data_format='pdf')
+    data = read_json(json_folder=JSON_FOLDER, json_file='presentations.json', data_format='pdf')
     return render_template(
         'table.html',
         title='Presentations',
@@ -149,7 +149,7 @@ def presentations():
 @app.route('/projects')
 def projects():
     """Shows a list of selected projects"""
-    data = _read_json(json_file='projects.json')
+    data = read_json(json_folder=JSON_FOLDER, json_file='projects.json')
     return render_template(
         'table.html',
         title='Projects',
@@ -183,21 +183,12 @@ def _as_attachment(response, content_type, filename):
     return response
 
 
-def _dump_json(d, indent=4, separators=(',', ': '), sort_keys=True):
-    return json.dumps(
-        d,
-        indent=indent,
-        separators=separators,
-        sort_keys=sort_keys,
-    )
-
-
 def _get_weather(location, debug=False):
     try:
         conditions = w.get_current_conditions(location['Key'], details=True)
     except TypeError:
         raise ValueError('Conditions cannot be found for the remote address {}'.format(_remote_address()))
-    w_json = _dump_json(conditions)
+    w_json = dump_json(conditions)
     if debug:
         print('Weather: {}'.format(w_json))
     fmt = u'{}'
@@ -210,17 +201,6 @@ def _get_weather(location, debug=False):
     ))
 
 
-def _read_json(json_file, data_format=None):
-    json_file = os.path.join(JSON_FOLDER, json_file)
-    with open(json_file) as f:
-        data = json.load(f, object_pairs_hook=collections.OrderedDict)
-        data = _reverse(data)
-    if data_format:
-        for k in data.keys():
-            data[k]['link'] = os.path.join('/static', data_format, data[k]['link'])
-    return data
-
-
 def _remote_address():
     if flask.request.headers.getlist("X-Forwarded-For"):
         remote_addr = flask.request.headers.getlist("X-Forwarded-For")[0]
@@ -229,10 +209,6 @@ def _remote_address():
     if remote_addr == '127.0.0.1':
         remote_addr = w.get_external_ip()['ip']
     return remote_addr
-
-
-def _reverse(d):
-    return collections.OrderedDict(reversed(list(d.items())))
 
 
 def _time(time_format='%Y-%m-%d %H:%M:%S'):

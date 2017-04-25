@@ -10,6 +10,8 @@
     </div>
 </div>
 <h4 class="centered">
-    See LaTeX source of my CV on <a href="https://github.com/mrakitin/CV" target="_blank" title="LaTeX source of my CV on GitHub"><span class="fa fa-github"></span></a>
+    {% set v = social['social']['github'] %}
+    See LaTeX source of my CV on
+    <a href="{{v['subprojects']['cv']['link']}}" target="_blank" title="{{v['subprojects']['cv']['description']}}"><span class="fa {{v['faicon']}} inline-icon"></span></a>
 </h4>
 {% endblock %}

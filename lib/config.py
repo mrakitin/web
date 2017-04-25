@@ -9,6 +9,8 @@ import dateutil.parser
 import flask
 import git
 
+from lib.utils import read_json
+
 STATIC_FOLDER = os.path.abspath('static')
 TEMPLATE_FOLDER = os.path.join(STATIC_FOLDER, 'html')
 JSON_FOLDER = os.path.join(STATIC_FOLDER, 'json')
@@ -96,6 +98,7 @@ def render_template(*args, **kwargs):
         kwargs['title'] = TITLE
     if 'last_updated' not in kwargs.keys():
         kwargs['last_updated'] = _repo_last_update()
+    kwargs['social'] = read_json(json_folder=JSON_FOLDER, json_file='social.json', reverse=False)
     return flask.render_template(*args, **kwargs)
 
 
