@@ -26,6 +26,7 @@ div.slideshow div.items {
     width: 100000px;
     z-index: 500;
     clear: both;
+    visibility: visible;
 }
 
 div.slideshow img {

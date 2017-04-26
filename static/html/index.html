@@ -28,11 +28,12 @@
     <div class="section" id="links">
         <h3 class="centered">Learn more about my work:</h3>
         <div class="pocoo-powered">
-            {% for t in social.keys() %}{% for k, v in social[t].items() %}{% if v['icon'] %}
-            <a class="reference external image-reference" href="{{v['link']}}" target="_blank"><img alt="{{v['description']}}" src="{{v['icon']}}" /></a>
-            {% endif %}{% endfor %}{% endfor %}
+            <div class="hide-images">
+                {% for t in social.keys() %}{% for k, v in social[t].items() %}{% if v['icon'] %}
+                <a class="reference external image-reference" href="{{v['link']}}" target="_blank"><img alt="{{v['description']}}" src="{{v['icon']}}" /></a>
+                {% endif %}{% endfor %}{% endfor %}
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
