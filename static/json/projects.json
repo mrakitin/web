@@ -4,10 +4,20 @@
         "title": "Scripts developed for SKIF-Ural, SKIF-Aurora and Tornado supercomputers",
         "link": "https://github.com/mrakitin/skif-bin"
     },
+    "2011.08-2013.10": {
+        "place": "Applied Technologies Ltd., Chelyabinsk, Russia",
+        "title": "TEP Automated Testing System (TATS)",
+        "link": "/static/pdf/2015-07-30_BNL_mrakitin.pdf#page=20",
+        "example": {
+            "image": "/static/img/TATS.png",
+            "width": "100%",
+            "height": "100%"
+        }
+    },
     "2013.10-2015.12": {
         "place": "Stony Brook University (SUNY), Stony Brook, NY",
-        "title": "USPEX crystal structure prediction",
-        "link": "http://uspex.stonybrook.edu/uspex.html"
+        "title": "USPEX crystal structure prediction (Matlab code)",
+        "link": "http://uspex.stonybrook.edu/uspexrn.html"
     },
     "2013.11-2015.12": {
         "place": "Stony Brook University (SUNY), Stony Brook, NY",
@@ -39,6 +49,21 @@
             "height": "500px"
         }
     },
+    "2015.04-2015.12": {
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
+        "title": "USPEX crystal structure prediction (Python code, to be released soon)",
+        "link": "/static/pdf/2015-07-30_BNL_mrakitin.pdf#page=22"
+    },
+    "2015.06": {
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
+        "title": "Stokes random cell generator (simplified REST API)",
+        "link": "/static/pdf/2015-07-30_BNL_mrakitin.pdf#page=23",
+        "example": {
+            "image": "/static/img/USPEX-api.png",
+            "width": "100%",
+            "height": "100%"
+        }
+    },
     "2015.07": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "Prototype of the TkInter GUI for SRW (demo for a job interview)",
@@ -61,12 +86,12 @@
     },
     "2015.12-present": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
-        "title": "SRW",
+        "title": "Synchrotron Radiation Workshop (SRW)",
         "link": "https://github.com/mrakitin/SRW"
     },
     "2015.12-present ": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
-        "title": "Sirepo",
+        "title": "Sirepo - an open source cloud-based web-interface for SRW",
         "link": "https://github.com/radiasoft/sirepo"
     }
 }
