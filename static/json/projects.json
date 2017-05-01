@@ -1,16 +1,21 @@
 {
+    "2008.10-2013.10": {
+        "place": "South Ural State University (SUSU), Chelyabinsk, Russia",
+        "title": "Scripts developed for SKIF-Ural, SKIF-Aurora and Tornado supercomputers",
+        "link": "https://github.com/mrakitin/skif-bin"
+    },
     "2013.10-2015.12": {
-        "place": "Stony Brook University (SUNY)",
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
         "title": "USPEX crystal structure prediction",
         "link": "http://uspex.stonybrook.edu/uspex.html"
     },
     "2013.11-2015.12": {
-        "place": "Stony Brook University (SUNY)",
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
         "title": "USPEX online utilities (a dosen of various tools and utilities)",
         "link": "http://han.ess.sunysb.edu/"
     },
     "2013.12-2015.12": {
-        "place": "Stony Brook University (SUNY)",
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
         "title": "USPEX manual (LaTeX & plasTeX)",
         "link": "http://han.ess.sunysb.edu/uspex_manual/"
     },
@@ -25,7 +30,7 @@
         }
     },
     "2015.04": {
-        "place": "Stony Brook University (SUNY)",
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
         "title": "USPEX online utilities - interactive crystal forms visualization",
         "link": "http://han.ess.sunysb.edu/crystal_form",
         "example": {
@@ -35,7 +40,7 @@
         }
     },
     "2015.07": {
-        "place": "Brookhaven National Laboratory (BNL)",
+        "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "Prototype of the TkInter GUI for SRW (demo for a job interview)",
         "link": "https://github.com/mrakitin/SRW-gui",
         "example": {
@@ -44,9 +49,8 @@
             "height": "100%"
         }
     },
-
     "2015.10": {
-        "place": "Stony Brook University (SUNY)",
+        "place": "Stony Brook University (SUNY), Stony Brook, NY",
         "title": "USPEX online utilities - assistance with visualization of 3d-molecules",
         "link": "http://han.ess.sunysb.edu/zmatrix2",
         "example": {
@@ -56,12 +60,12 @@
         }
     },
     "2015.12-present": {
-        "place": "Brookhaven National Laboratory (BNL)",
+        "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "SRW",
         "link": "https://github.com/mrakitin/SRW"
     },
     "2015.12-present ": {
-        "place": "Brookhaven National Laboratory (BNL)",
+        "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "Sirepo",
         "link": "https://github.com/radiasoft/sirepo"
     }
