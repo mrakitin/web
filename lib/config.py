@@ -46,7 +46,7 @@ DATE_FORMAT = {
 PRESENTATIONS = read_json(json_folder=JSON_FOLDER, json_file='presentations.json', data_format='pdf')
 PROJECTS = read_json(json_folder=JSON_FOLDER, json_file='projects.json')
 SOCIAL = read_json(json_folder=JSON_FOLDER, json_file='social.json', reverse=False)
-ETC = read_json(json_folder=JSON_FOLDER, json_file='etc.json')
+ETC = read_json(json_folder=JSON_FOLDER, json_file='etc.json', reverse=False)
 
 
 def get_cv_pdfs():

@@ -1,9 +1,27 @@
 {
-    "pertable": {
+    "pertable-webgl": {
         "title": "Periodic table in WebGL",
         "link": "https://threejs.org/examples/css3d_periodictable.html",
         "example": {
             "demo": "/static/etc/pertable.html",
+            "width": "100%",
+            "height": "500px"
+        }
+    },
+    "pertable-flash-en": {
+        "title": "Periodic table in Flash (English)",
+        "link": "http://touchspin.touchspin.com/",
+        "example": {
+            "demo": "/static/flash/pertable_en.swf",
+            "width": "100%",
+            "height": "500px"
+        }
+    },
+    "pertable-flash-ru": {
+        "title": "Periodic table in Flash (Russian)",
+        "link": "http://www.naexamen.ru/mend/index.shtml",
+        "example": {
+            "demo": "/static/flash/pertable_ru.swf",
             "width": "100%",
             "height": "500px"
         }
