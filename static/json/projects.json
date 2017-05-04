@@ -34,7 +34,7 @@
         "title": "Programming exercise for a job interview",
         "link": "/static/projects/aiida_assignment2.pdf",
         "example": {
-            "link": "/static/projects/aiida_assignment2.html",
+            "demo": "/static/projects/aiida_assignment2.html",
             "width": "320px",
             "height": "360px"
         }
@@ -44,7 +44,7 @@
         "title": "USPEX online utilities - interactive crystal forms visualization",
         "link": "http://han.ess.sunysb.edu/crystal_form",
         "example": {
-            "link": "/static/projects/crystal_form.html",
+            "demo": "/static/projects/crystal_form.html",
             "width": "100%",
             "height": "500px"
         }
@@ -79,7 +79,7 @@
         "title": "USPEX online utilities - assistance with visualization of 3d-molecules",
         "link": "http://han.ess.sunysb.edu/zmatrix2",
         "example": {
-            "link": "/static/projects/3d-molecule.html",
+            "demo": "/static/projects/3d-molecule.html",
             "width": "100%",
             "height": "500px"
         }

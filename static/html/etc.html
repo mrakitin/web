@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2 class="centered">{{title}}:</h2>
+<div class="table-responsive">
+    <table id="activity" class="table">
+        <tr>
+            <th>Title:</th>
+            <th>Link:</th>
+        </tr>
+        {% for k, v in data.items() %}
+        <tr>
+            <td class="date-field" id="{{k}}">{{v['title']}}
+                <a class="headerlink" href="#{{k}}" title="Permalink to this headline">¶</a>
+            </td>
+            <td><a href="{{v['link']}}" target="{{target}}">{{v['link']}}</a></td>
+        </tr>
+        {% set num_columns, colspan = 2,  2 %}
+        {% include 'examples.html' %}
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

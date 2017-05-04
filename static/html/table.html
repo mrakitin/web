@@ -51,19 +51,8 @@
             <td>{{v['journal']}}</td>
             {% endif %}
         </tr>
-        {% if 'example' in v %}
-        <tr>
-            <td></td>
-            <td colspan="2" class="centered">Example:<br>
-                {% if 'link' in v['example'] %}
-                <iframe class="iframe" width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example']['link']}}" scrolling="no"></iframe>
-                {% endif %}
-                {% if 'image' in v['example'] %}
-                <img width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example']['image']}}">
-                {% endif %}
-            </td>
-        </tr>
-        {% endif %}
+        {% set num_columns, colspan = 3,  2 %}
+        {% include 'examples.html' %}
         {% endfor %}
     </table>
 </div>

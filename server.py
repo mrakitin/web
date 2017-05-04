@@ -12,7 +12,7 @@ import weather.weather as w
 from lib.bibtex_pubs import bibtex_pubs
 from lib.bokeh_plot import bokeh_plot
 from lib.config import render_template, get_cv_pdfs, STATIC_FOLDER, TEMPLATE_FOLDER, PRESENTATIONS, \
-    PROJECTS, OWNER, USER
+    PROJECTS, OWNER, USER, ETC
 from lib.utils import dump_json
 
 app = flask.Flask(
@@ -70,6 +70,17 @@ def cv_files(bib=None, as_attachment=True):
         as_attachment=as_attachment,
         attachment_filename=attachment_filename,
         mimetype='application/{}'.format(mimetype),
+    )
+
+
+@app.route('/etc')
+def etc():
+    """Shows a list of interesting projects by other people"""
+    return render_template(
+        'etc.html',
+        title='Useful and interesting projects by other people',
+        data=ETC,
+        target='_blank',
     )
 
 

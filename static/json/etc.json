@@ -1,0 +1,11 @@
+{
+    "pertable": {
+        "title": "Periodic table in WebGL",
+        "link": "https://threejs.org/examples/css3d_periodictable.html",
+        "example": {
+            "demo": "/static/etc/pertable.html",
+            "width": "100%",
+            "height": "500px"
+        }
+    }
+}

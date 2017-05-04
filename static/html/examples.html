@@ -1,0 +1,29 @@
+{% if 'example' in v %}
+<tr>
+    {% for i in range(num_columns-colspan) %}
+    <td></td>
+    {% endfor %}
+    <td colspan="{{colspan}}" class="centered"><mark><b>Example:</b></mark><br>
+        {% if 'demo' in v['example'] %}
+        {% set parm = 'demo' %}
+        {% elif 'image' in v['example'] %}
+        {% set parm = 'image' %}
+        {% endif %}
+        {% set new_tab_link %}
+        <div class="flex-item right-corner">
+            <a class="btn btn-default btn-primary btn-xs margin-right" href="{{v['example'][parm]}}" target="_blank">Open in new tab</a>
+        </div>
+        {% endset %}
+        {% set attrs %}
+        width="{{v['example']['width']}}" height="{{v['example']['height']}}" src="{{v['example'][parm]}}"
+        {% endset %}
+        {% if parm == 'demo' %}
+        <iframe class="iframe" {{attrs}} scrolling="no"></iframe>
+        {{new_tab_link}}
+        {% elif parm == 'image' %}
+        <img {{attrs}}>
+        {{new_tab_link}}
+        {% endif %}
+    </td>
+</tr>
+{% endif %}
