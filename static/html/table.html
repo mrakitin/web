@@ -4,16 +4,16 @@
     'publications' else title}}:</h2>
 <div class="buttons-pane">
     <div class="flex-item left-corner">
-        <a class="btn btn-default btn-success btn-sm margin-left" href="/cv/CV" target="_self">Download CV</a>
+        <a class="btn btn-default btn-success btn-xs margin-left" href="/cv/CV" target="_self">Download CV</a>
         {% if title.lower() == 'publications' %}
-        <a class="btn btn-default btn-warning btn-sm margin-left" href="/cv/pubs" target="_self">Publications</a>
-        <a class="btn btn-default btn-info btn-sm margin-left" href="/cv/bib" target="_self">BibTeX</a>
+        <a class="btn btn-default btn-warning btn-xs margin-left" href="/cv/pubs" target="_self">Publications</a>
+        <a class="btn btn-default btn-info btn-xs margin-left" href="/cv/bib" target="_self">BibTeX</a>
         {% endif %}
     </div>
     {% if title.lower() == 'publications' %}
     <div class="flex-item right-corner">
-        <a class="btn btn-default {{button_short}} btn-sm margin-right" href="/publications" target="_self">Short names</a>
-        <a class="btn btn-default {{button_long}} btn-sm margin-right" href="/publications/long" target="_self">Long names</a>
+        <a class="btn btn-default {{button_short}} btn-xs margin-right" href="/publications" target="_self">Short names</a>
+        <a class="btn btn-default {{button_long}} btn-xs margin-right" href="/publications/long" target="_self">Long names</a>
     </div>
     {% endif %}
 </div>
