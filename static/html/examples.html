@@ -8,6 +8,8 @@
         {% set parm = 'demo' %}
         {% elif 'image' in v['example'] %}
         {% set parm = 'image' %}
+        {% elif 'flash' in v['example'] %}
+        {% set parm = 'flash' %}
         {% endif %}
         {% set new_tab_link %}
         <div class="flex-item right-corner">
@@ -22,6 +24,14 @@
         {{new_tab_link}}
         {% elif parm == 'image' %}
         <img {{attrs}}>
+        {{new_tab_link}}
+        {% elif parm == 'flash' %}
+        <object type="application/x-shockwave-flash"
+                data="{{v['example'][parm]}}"
+                width="{{v['example']['width']}}" height="{{v['example']['height']}}">
+          <param name="movie" value="{{v['example'][parm]}}" />
+          <img src="{{v['example']['alt']}}" />
+        </object>
         {{new_tab_link}}
         {% endif %}
     </td>
