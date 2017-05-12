@@ -21,12 +21,17 @@
     },
     "2016-05-30": {
         "place": "Brookhaven National Laboratory (BNL)",
-        "title": "Simulating Beamlines and User Experiments with \"Synchrotron Radiation Workshop\"",
+        "title": "Simulating Beamlines and User Experiments with \"Synchrotron Radiation Workshop\" (poster)",
         "link": "2016-05-25_poster_UM-2016_mrakitin.pdf"
     },
     "2016-12-13": {
         "place": "Brookhaven National Laboratory (BNL)",
         "title": "Early Career Researcher Symposium 2016",
         "link": "2017-12-13_ECRS-2016_RakitinMS.pdf"
+    },
+    "2017-05-15": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "Sirepo - software framework for X-ray sources and optics simulations (poster)",
+        "link": "2017-05-15_poster_UM-2017_mrakitin.pdf"
     }
 }

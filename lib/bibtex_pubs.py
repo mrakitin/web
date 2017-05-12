@@ -10,6 +10,7 @@ import pybtex.database
 import pybtex.richtext
 
 from lib.config import render_template, STATIC_FOLDER, TEMPLATE_FOLDER, CV_FOLDER, PUB_BIB, BIB_NAMES
+from lib.utils import clear_dashes
 
 bibtex_pubs = flask.Blueprint('bibtex_pubs', __name__, static_folder=STATIC_FOLDER, template_folder=TEMPLATE_FOLDER)
 
@@ -41,16 +42,16 @@ def publications(version='short'):
         s = re.sub(_latex_formula('^'), '<sup><em>\g<formula_text></em></sup>', s)
         s = re.sub(_latex_formula(''), '<em>\g<formula_text></em>', s)
         s = re.sub(_latex_block(), '\g<block_text>', s)
-        s = _clear_dashes(s)
+        s = clear_dashes(s)
         authors = _format_authors(p.persons, first_letters_only=first_letters_only)
         pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
         pages = '{} '.format(e['pages']) if 'pages' in e.keys() else ''
         comma = ',' if 'volume' in e.keys() else ''
-        journal = _clear_dashes('<em>{}</em>{} {}{}({})'.format(pub_type, comma, volume, pages, e['year']))
+        journal = clear_dashes('<em>{}</em>{} {}{}({})'.format(pub_type, comma, volume, pages, e['year']))
         data[k] = {
             'id': len(entries) - i,
-            'year': flask.Markup(_clear_dashes(e['year'])),
+            'year': flask.Markup(clear_dashes(e['year'])),
             'title': flask.Markup(s),
             'link': e['url'],
             'authors': flask.Markup(authors),
@@ -77,10 +78,6 @@ def publications(version='short'):
 
 def _boldify_author(s, a):
     return s.replace(a, '<b>{}</b>'.format(a))
-
-
-def _clear_dashes(s, replace='&ndash;'):
-    return s.replace('--', '-').replace('-', replace)
 
 
 def _format_authors(p, first_letters_only):
