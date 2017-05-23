@@ -7,7 +7,7 @@ import flask
 
 
 def clear_dashes(s, replace='&ndash;'):
-    return re.sub('\s-+', ' {}'.format(replace), s)
+    return re.sub('\s-+', ' {}'.format(replace), s.replace('--', '-'))
 
 
 def dump_json(d, indent=4, separators=(',', ': '), sort_keys=True):
