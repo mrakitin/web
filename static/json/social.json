@@ -3,27 +3,37 @@
         "bnl": {
             "link": "http://staff.ps.bnl.gov/staff.aspx?id=92991",
             "icon": "/static/img/logos/logo_BNL.png",
-            "description": "Brookhaven National Laboratory - that's where I work now"
+            "faicon": "fa-institution",
+            "description": "Brookhaven National Laboratory - that's where I work now",
+            "short": "Brookhaven National Laboratory"
         },
         "sbu": {
             "link": "http://uspex.stonybrook.edu/lab.html",
             "icon": "/static/img/logos/logo_SBU.png",
-            "description": "My postdoc at Stony Brook University"
+            "faicon": "fa-university",
+            "description": "My postdoc at Stony Brook University",
+            "short": "Stony Brook University"
         },
         "susu": {
             "link": "http://physics.susu.ac.ru/drupal/node/11",
             "icon": "/static/img/logos/logo_SUSU.png",
-            "description": "South Ural State University - my Alma Mater"
+            "faicon": "fa-university",
+            "description": "South Ural State University - my Alma Mater",
+            "short": "South Ural State University"
         },
         "appliedtech": {
             "link": "http://appliedtech.ru/",
             "icon": "/static/img/logos/logo_AT.png",
-            "description": "Applied Technologies Ltd. - software company in Chelyabinsk, Russia"
+            "faicon": "fa-industry",
+            "description": "Applied Technologies Ltd. - software company in Chelyabinsk, Russia",
+            "short": "Applied Technologies Ltd."
         },
         "rocketsoftware": {
             "link": "http://www.rocketsoftware.com/",
             "icon": "/static/img/logos/logo_Rocket.png",
-            "description": "Rocket Software Inc. - a partner of AppliedTech"
+            "faicon": "fa-industry",
+            "description": "Rocket Software Inc. - a partner of AppliedTech",
+            "short": "Rocket Software Inc."
         }
     },
     "social": {
@@ -33,6 +43,7 @@
             "faicon": "fa-github",
             "icon": "/static/img/logos/logo_GitHub.png",
             "description": "See my GitHub projects",
+            "short": "My GitHub",
             "subprojects": {
                 "cv": {
                     "link": "https://github.com/mrakitin/CV",
@@ -49,7 +60,8 @@
             "button-class": "btn-linkedin",
             "faicon": "fa-linkedin",
             "icon": "/static/img/logos/logo_LinkedIn.png",
-            "description": "My LinkedIn - let's connect!"
+            "description": "My LinkedIn - let's connect!",
+            "short": "My LinkedIn"
         },
         "google-scholar": {
             "link": "https://scholar.google.com/citations?user=kK04dAcAAAAJ&hl=en",
@@ -63,26 +75,27 @@
             "button-class": "btn-twitter",
             "faicon": "fa-twitter",
             "icon": "/static/img/logos/logo_Twitter.png",
-            "description": "My Twitter - let's connect!"
+            "description": "My Twitter - let's connect!",
+            "short": "My Twitter"
         },
         "research-gate": {
             "link": "https://www.researchgate.net/profile/Maksim_Rakitin",
             "button-class": "",
-            "faicon": "",
+            "faicon": "fa-link",
             "icon": "/static/img/logos/logo_ResearchGate.png",
             "description": "My ResearchGate"
         },
         "researcher-id": {
             "link": "http://www.researcherid.com/rid/A-7753-2015",
             "button-class": "",
-            "faicon": "",
+            "faicon": "fa-link",
             "icon": "/static/img/logos/logo_ResearcherID.png",
             "description": "My ResearcherID"
         },
         "orcid": {
             "link": "http://orcid.org/0000-0003-3685-852X",
             "button-class": "",
-            "faicon": "",
+            "faicon": "fa-link",
             "icon": "/static/img/logos/logo_ORCID.png",
             "description": "My ORCID"
         }

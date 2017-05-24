@@ -67,23 +67,22 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/">About {{owner}}</a></li>
-                        <li><a href="/cv">CV</a></li>
-                        <li><a href="/projects">Projects</a></li>
-                        <li><a href="/presentations">Presentations</a></li>
-                        <li><a href="/publications">Publications</a></li>
+                        <li><a href="/"><span class="fa fa-address-card-o"></span> About {{owner}}</a></li>
+                        <li><a href="/cv"><span class="fa fa-suitcase"></span> CV</a></li>
+                        <li><a href="/projects"><span class="fa fa-cogs"></span> Projects</a></li>
+                        <li><a href="/presentations"><span class="fa fa-paperclip"></span> Presentations</a></li>
+                        <li><a href="/publications"><span class="fa fa-book"></span> Publications</a></li>
+                        {% for t in social.keys() %}<li class="divider"></li>{% for k, v in social[t].items() %}{% if v['icon'] %}
+                        <li><a href="{{v['link']}}" target="_blank">{% if 'faicon' in v %}<span class="fa {{v['faicon']}}"></span> {% endif %}{{v['short'] if 'short' in v else v['description']}}</a></li>
+                        {% endif %}{% endfor %}{% endfor %}
                         <li class="divider"></li>
-                        <li><a href="/weather">Weather</a></li>
-                        <li><a href="/myweather">Your weather</a></li>
-                        <li><a href="/ip">Your IP</a></li>
-                        <li><a href="/bokeh">Bokeh example</a></li>
-                        <li><a href="/etc">Interesting stuff</a></li>
+                        <li><a href="/weather"><span class="fa fa-thermometer-full"></span> Weather</a></li>
+                        <li><a href="/myweather"><span class="fa fa-thermometer-full"></span> Your weather</a></li>
+                        <li><a href="/ip"><span class="fa fa-globe"></span> Your IP</a></li>
+                        <li><a href="/bokeh"><span class="fa fa-line-chart"></span> Bokeh example</a></li>
+                        <li><a href="/etc"><span class="fa fa-puzzle-piece"></span> Interesting stuff</a></li>
+                        <li><a href="https://mail.yandex.com/?pdd_domain=mrakitin.xyz" target="_blank"><span class="fa fa-envelope-o"></span> Mail for domain</a></li>
                         <li class="divider"></li>
-                        <li><a href="http://staff.ps.bnl.gov/staff.aspx?id=92991" target="_blank">BNL</a></li>
-                        <li><a href="https://github.com/mrakitin" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/maksim-rakitin-35490514/" target="_blank">LinkedIn</a>
-                        </li>
-                        <li><a href="https://mail.yandex.com/?pdd_domain=mrakitin.xyz" target="_blank">Mail for domain</a></li>
                         <li>
                             <div id="datepicker"></div>
                         </li>
