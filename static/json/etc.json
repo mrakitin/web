@@ -27,5 +27,14 @@
             "width": "100%",
             "height": "500px"
         }
+    },
+    "ptable.com": {
+        "title": "Periodic table (interactive pdf)",
+        "link": "http://ptable.com/",
+        "example": {
+            "demo": "/static/etc/ptable.com.pdf",
+            "width": "100%",
+            "height": "500px"
+        }
     }
 }
