@@ -50,7 +50,7 @@ def publications(version='short'):
         elif 'booktitle' in e.keys():
             pub_type = e['booktitle']
         else:
-            p.type.capitalize()
+            pub_type = p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
         pages = '{} '.format(e['pages']) if 'pages' in e.keys() else ''
         comma = ',' if 'volume' in e.keys() else ''
