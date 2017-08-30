@@ -44,7 +44,13 @@ def publications(version='short'):
         s = re.sub(_latex_block(), '\g<block_text>', s)
         s = clear_dashes(s)
         authors = _format_authors(p.persons, first_letters_only=first_letters_only)
-        pub_type = e['journal'] if 'journal' in e.keys() else p.type.capitalize()
+
+        if 'journal' in e.keys():
+            pub_type = e['journal']
+        elif 'booktitle' in e.keys():
+            pub_type = e['booktitle']
+        else:
+            p.type.capitalize()
         volume = '<b>{}</b>, '.format(e['volume']) if 'volume' in e.keys() else ''
         pages = '{} '.format(e['pages']) if 'pages' in e.keys() else ''
         comma = ',' if 'volume' in e.keys() else ''
