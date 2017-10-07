@@ -33,5 +33,11 @@
         "place": "Brookhaven National Laboratory (BNL)",
         "title": "Sirepo - software framework for X-ray sources and optics simulations (poster)",
         "link": "2017-05-15_poster_UM-2017_mrakitin.pdf"
+    },
+    "2017-08-10": {
+        "place": "SPIE (San Diego, CA)",
+        "title": "Sirepo: a web-based interface for physical optics simulations - its deployment and use at NSLS-II",
+        "link": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10388/2274031/Sirepo--a-web-based-interface-for-physical-optics-simulations/10.1117/12.2274031.full"
     }
+
 }

@@ -27,7 +27,8 @@ def read_json(json_folder, json_file, data_format=None, reverse=True):
             data = _reverse(data)
     if data_format:
         for k in data.keys():
-            data[k]['link'] = os.path.join('/static', data_format, data[k]['link'])
+            if not (re.search('http://', data[k]['link']) or re.search('https://', data[k]['link'])):
+                data[k]['link'] = os.path.join('/static', data_format, data[k]['link'])
     for k in data.keys():
         if 'title' in data[k]:
             data[k]['title'] = flask.Markup(clear_dashes(data[k]['title']))

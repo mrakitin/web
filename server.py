@@ -153,7 +153,7 @@ def presentations():
         'table.html',
         title='Presentations',
         data=PRESENTATIONS,
-        target='_self',
+        target='_blank',
     )
 
 
