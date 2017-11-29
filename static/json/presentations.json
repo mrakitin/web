@@ -27,7 +27,7 @@
     "2016-12-13": {
         "place": "Brookhaven National Laboratory (BNL)",
         "title": "Early Career Researcher Symposium 2016",
-        "link": "2017-12-13_ECRS-2016_RakitinMS.pdf"
+        "link": "2016-12-13_ECRS-2016_RakitinMS.pdf"
     },
     "2017-05-15": {
         "place": "Brookhaven National Laboratory (BNL)",
@@ -38,6 +38,15 @@
         "place": "SPIE (San Diego, CA)",
         "title": "Sirepo: a web-based interface for physical optics simulations - its deployment and use at NSLS-II",
         "link": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10388/2274031/Sirepo--a-web-based-interface-for-physical-optics-simulations/10.1117/12.2274031.full"
+    },
+    "2017-10-27": {
+        "place": "Brookhaven National Laboratory (BNL)",
+        "title": "NSLS-II Lunchtime seminar (Sirepo)",
+        "link": "2017-10-27_Lunchtime_seminar_RakitinMS.pdf"
+    },
+    "2017-11-09": {
+        "place": "Oak Ridge National Laboratory (ORNL)",
+        "title": "ORNL Visualization Hackathon",
+        "link": "2017-11-09_ORNL-Viz-Hackathon_RakitinMS.pdf"
     }
-
 }
