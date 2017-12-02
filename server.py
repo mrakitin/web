@@ -38,7 +38,7 @@ def index():
 def cv():
     data = get_cv_pdfs()
     for k in data.keys():
-        if k == 'cv':
+        if k in ['cv', 'bio']:
             button_type = 'success'
         elif k == 'pubs':
             button_type = 'warning'

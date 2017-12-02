@@ -38,6 +38,7 @@ CV_PDF = '{}_CV.pdf'.format(AUTHOR)
 PUB_TEX = '{}_pubs.tex'.format(AUTHOR)
 PUB_PDF = '{}_pubs.pdf'.format(AUTHOR)
 PUB_BIB = '{}_pubs.bib'.format(AUTHOR)
+BIO_PDF = '{}_bio.pdf'.format(AUTHOR)
 
 # Date format of the last update:
 DATE_FORMAT = {
@@ -76,6 +77,12 @@ def get_cv_pdfs():
         'file': os.path.join(CV_FOLDER, PUB_BIB)
     }
 
+    # Add bio-file details manually:
+    d['bio'] = {
+        'long_name': 'Short bio',
+        'orig_name': 'bio',
+        'file': os.path.join(CV_FOLDER, BIO_PDF)
+    }
     return d
 
 
