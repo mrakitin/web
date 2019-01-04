@@ -33,6 +33,13 @@ def index():
     )
 
 
+@app.route('/keybase.txt')
+def keybase():
+    with open(os.path.join(STATIC_FOLDER, 'etc', 'keybase.txt'), 'r') as f:
+        text = f.read()
+    return flask.render_template_string(text)
+
+
 @app.route('/cv')
 @app.route('/cv/')
 def cv():

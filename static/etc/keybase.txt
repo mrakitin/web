@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/mrakitin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mrakitin.xyz
+  * I am mrakitin (https://keybase.io/mrakitin) on keybase.
+  * I have a public key ASCq44aRJAKRAJmSxGRHz8-wYzIs3bcOQK6hTENXKPXR8Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120aae38691240291009992c46447cfcfb063322cddb70e40aea14c435728f5d1f00a",
+      "host": "keybase.io",
+      "kid": "0120aae38691240291009992c46447cfcfb063322cddb70e40aea14c435728f5d1f00a",
+      "uid": "e8432c291c72a339c54fd0c5ae5b2619",
+      "username": "mrakitin"
+    },
+    "merkle_root": {
+      "ctime": 1546641497,
+      "hash": "1dfb3326555526db797ffc13b0d668aaf0c029e14ff20243c5ac8f6806c413cd78e10905c0629f7db0084d653500461a980a259774d4aa7970737521ae8d3e60",
+      "hash_meta": "5380b5c44a4f518eb9e22ebee05d70ddb5b057c3357e452a0394bb05a1a759e1",
+      "seqno": 4234069
+    },
+    "service": {
+      "entropy": "RUs7BgJgaqh942cwTXeMVtQp",
+      "hostname": "mrakitin.xyz",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.12.6"
+  },
+  "ctime": 1546641625,
+  "expire_in": 504576000,
+  "prev": "3ff51f9c872dfdb17ebb1a66d15f74156e6847ec494a94e8e17a83f0084d1a5c",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgquOGkSQCkQCZksRkR8/PsGMyLN23DkCuoUxDVyj10fAKp3BheWxvYWTESpcCB8QgP/UfnIct/bF+uxpm0V90FW5oR+xJSpTo4XqD8AhNGlzEIC21RtUzgqY9XMDhJmcJ8I1xbQMmJqDakuS9d1mX5380AgHCo3NpZ8RAo/wxe1lLLv31fpB3aDkOS/nbZfyX0cacMkF66wy4cHwT6TM2svyVzpKT4KulgUJVm2KEH8H3drcAyN13fyBCC6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIKdj70P2CQ5Pc7BCGghDmqJ1o5B4FelBwT0iLuahGQwXo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mrakitin
+
+==================================================================
