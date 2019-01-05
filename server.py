@@ -37,7 +37,7 @@ def index():
 def keybase():
     with open(os.path.join(STATIC_FOLDER, 'etc', 'keybase.txt'), 'r') as f:
         text = f.read()
-    return flask.Response(text, mimetype='text/xml')
+    return flask.Response(text, mimetype='text/plain')
 
 
 @app.route('/cv')
