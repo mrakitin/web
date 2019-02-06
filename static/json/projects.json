@@ -94,7 +94,7 @@
         "title": "Sirepo - an open source cloud-based web-interface for SRW",
         "link": "https://github.com/radiasoft/sirepo"
     },
-    "2017.11-present ": {
+    "2017.11-present": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "Bluesky - a library for experiment control and collection of scientific data and metadata",
         "link": "https://nsls-ii.github.io/bluesky"
@@ -104,12 +104,12 @@
         "title": "Ophyd - a device abstraction library",
         "link": "https://nsls-ii.github.io/ophyd"
     },
-    "2017.11-present ": {
+    "2017.11-present  ": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "Databroker - a simple, user-friendly interface for retrieving stored data and metadata from multiple sources",
         "link": "https://nsls-ii.github.io/databroker"
     },
-    "2017.11-present ": {
+    "2017.11-present   ": {
         "place": "Brookhaven National Laboratory (BNL), Upton, NY",
         "title": "lightsource2-recipes conda recipes",
         "link": "https://github.com/NSLS-II/lightsource2-recipes"
